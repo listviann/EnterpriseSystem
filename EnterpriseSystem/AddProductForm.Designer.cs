@@ -43,6 +43,7 @@
             this.ProductSellingPrice_textBox.PlaceholderText = "Selling price";
             this.ProductSellingPrice_textBox.Size = new System.Drawing.Size(216, 27);
             this.ProductSellingPrice_textBox.TabIndex = 10;
+            this.ProductSellingPrice_textBox.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.ProductSellingPrice_textBox_KeyPress);
             // 
             // ProductType_textBox
             // 
@@ -95,6 +96,7 @@
             this.CreateProduct_button.TabIndex = 14;
             this.CreateProduct_button.Text = "Add";
             this.CreateProduct_button.UseVisualStyleBackColor = false;
+            this.CreateProduct_button.Click += new System.EventHandler(this.CreateProduct_button_Click);
             // 
             // AddProductForm
             // 

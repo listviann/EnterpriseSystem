@@ -61,18 +61,63 @@ namespace EnterpriseSystem
 
         }
 
+        private void EmployeeSalary_textBox_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (!char.IsNumber(e.KeyChar))
+            {
+                e.Handled = true;
+            }
+        }
+
+        private void EmployeeBirthDay_textBox_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (!char.IsNumber(e.KeyChar))
+            {
+                e.Handled = true;
+            }
+        }
+
+        private void EmployeeBirthMonth_textBox_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (!char.IsNumber(e.KeyChar))
+            {
+                e.Handled = true;
+            }
+        }
+
+        private void EmployeeBirthYear_textBox_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (!char.IsNumber(e.KeyChar))
+            {
+                e.Handled = true;
+            }
+        }
+
         private void ClearFields_button_Click(object sender, EventArgs e)
         {
             EmployeeName_textBox.Text = "";
-            EmployeeSalary_textBox.Text = "";
             EmployeeEmail_textBox.Text = "";
             EmployeePhoneNumber_textBox.Text = "";
-            EmployeeSalary_textBox.Text = "";
-            EmployeeBirthDay_textBox.Text = "";
-            EmployeeBirthMonth_textBox.Text = "";
-            EmployeeBirthYear_textBox.Text = "";
+            EmployeeSalary_textBox.Text = "1";
+            EmployeeBirthDay_textBox.Text = "1";
+            EmployeeBirthMonth_textBox.Text = "1";
+            EmployeeBirthYear_textBox.Text = "0001";
             EmployeePosition_comboBox.Text = "";
             EmployeeType_comboBox.Text = "";
+        }
+
+        private void CreateEmployee_button_Click(object sender, EventArgs e)
+        {
+            if (string.IsNullOrWhiteSpace(EmployeeSalary_textBox.Text)
+                || string.IsNullOrWhiteSpace(EmployeeBirthDay_textBox.Text)
+                || string.IsNullOrWhiteSpace(EmployeeBirthMonth_textBox.Text)
+                || string.IsNullOrWhiteSpace(EmployeeBirthYear_textBox.Text))
+            {
+                EmployeeSalary_textBox.Text = "1";
+                EmployeeBirthDay_textBox.Text = "1";
+                EmployeeBirthMonth_textBox.Text = "1";
+                EmployeeBirthYear_textBox.Text = "0001";
+            }
         }
     }
 }

@@ -60,6 +60,7 @@
             this.EditProduct_button.TabIndex = 20;
             this.EditProduct_button.Text = "Edit";
             this.EditProduct_button.UseVisualStyleBackColor = false;
+            this.EditProduct_button.Click += new System.EventHandler(this.EditProduct_button_Click);
             // 
             // EditProduct_label
             // 
@@ -79,6 +80,7 @@
             this.ProductSellingPrice_textBox.PlaceholderText = "Selling price";
             this.ProductSellingPrice_textBox.Size = new System.Drawing.Size(216, 27);
             this.ProductSellingPrice_textBox.TabIndex = 18;
+            this.ProductSellingPrice_textBox.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.ProductSellingPrice_textBox_KeyPress);
             // 
             // ProductType_textBox
             // 

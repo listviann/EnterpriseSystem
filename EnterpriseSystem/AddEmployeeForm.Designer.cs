@@ -88,11 +88,13 @@
             // EmployeeBirthDay_textBox
             // 
             this.EmployeeBirthDay_textBox.Location = new System.Drawing.Point(3, 3);
+            this.EmployeeBirthDay_textBox.MaxLength = 2;
             this.EmployeeBirthDay_textBox.Name = "EmployeeBirthDay_textBox";
             this.EmployeeBirthDay_textBox.PlaceholderText = "DD";
             this.EmployeeBirthDay_textBox.Size = new System.Drawing.Size(50, 27);
             this.EmployeeBirthDay_textBox.TabIndex = 6;
             this.EmployeeBirthDay_textBox.TextChanged += new System.EventHandler(this.EmployeeBirthDate_textBox_TextChanged);
+            this.EmployeeBirthDay_textBox.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.EmployeeBirthDay_textBox_KeyPress);
             // 
             // EmployeeSalary_textBox
             // 
@@ -103,6 +105,7 @@
             this.EmployeeSalary_textBox.Size = new System.Drawing.Size(216, 27);
             this.EmployeeSalary_textBox.TabIndex = 7;
             this.EmployeeSalary_textBox.TextChanged += new System.EventHandler(this.EmployeeSalary_textBox_TextChanged);
+            this.EmployeeSalary_textBox.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.EmployeeSalary_textBox_KeyPress);
             // 
             // EmployeePosition_comboBox
             // 
@@ -131,6 +134,7 @@
             this.CreateEmployee_button.TabIndex = 12;
             this.CreateEmployee_button.Text = "Create";
             this.CreateEmployee_button.UseVisualStyleBackColor = false;
+            this.CreateEmployee_button.Click += new System.EventHandler(this.CreateEmployee_button_Click);
             // 
             // ClearFields_button
             // 
@@ -148,18 +152,22 @@
             // EmployeeBirthMonth_textBox
             // 
             this.EmployeeBirthMonth_textBox.Location = new System.Drawing.Point(59, 3);
+            this.EmployeeBirthMonth_textBox.MaxLength = 2;
             this.EmployeeBirthMonth_textBox.Name = "EmployeeBirthMonth_textBox";
             this.EmployeeBirthMonth_textBox.PlaceholderText = "MM";
             this.EmployeeBirthMonth_textBox.Size = new System.Drawing.Size(50, 27);
             this.EmployeeBirthMonth_textBox.TabIndex = 14;
+            this.EmployeeBirthMonth_textBox.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.EmployeeBirthMonth_textBox_KeyPress);
             // 
             // EmployeeBirthYear_textBox
             // 
             this.EmployeeBirthYear_textBox.Location = new System.Drawing.Point(115, 3);
+            this.EmployeeBirthYear_textBox.MaxLength = 4;
             this.EmployeeBirthYear_textBox.Name = "EmployeeBirthYear_textBox";
             this.EmployeeBirthYear_textBox.PlaceholderText = "YYYY";
             this.EmployeeBirthYear_textBox.Size = new System.Drawing.Size(100, 27);
             this.EmployeeBirthYear_textBox.TabIndex = 15;
+            this.EmployeeBirthYear_textBox.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.EmployeeBirthYear_textBox_KeyPress);
             // 
             // EmployeeBirthDate_label
             // 

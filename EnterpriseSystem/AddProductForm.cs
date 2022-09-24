@@ -29,11 +29,27 @@ namespace EnterpriseSystem
 
         }
 
+        private void ProductSellingPrice_textBox_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (!char.IsNumber(e.KeyChar))
+            {
+                e.Handled = true;
+            }
+        }
+
         private void ClearFields_button_Click(object sender, EventArgs e)
         {
             ProductName_textBox.Text = "";
             ProductType_textBox.Text = "";
             ProductSellingPrice_textBox.Text = "1";
+        }
+
+        private void CreateProduct_button_Click(object sender, EventArgs e)
+        {
+            if (string.IsNullOrWhiteSpace(ProductSellingPrice_textBox.Text))
+            {
+                ProductSellingPrice_textBox.Text = "1";
+            }
         }
     }
 }
