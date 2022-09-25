@@ -11,8 +11,6 @@ namespace EnterpriseSystem
             //
             // centering horizontally
             Welcome_label.Left = (this.ClientSize.Width - Welcome_label.Width) / 2;
-            // centering vertically
-            //SignIn_label.Top = (this.ClientSize.Height - SignIn_label.Height) / 2;
         }
 
         private void Quit_button_Click(object sender, EventArgs e)
