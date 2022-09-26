@@ -126,10 +126,5 @@ namespace EnterpriseSystem
 
             this.Close();
         }
-
-        private void ShowMessage(string message)
-        {
-            MessageBox.Show(message);
-        }
     }
 }

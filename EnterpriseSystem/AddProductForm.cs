@@ -8,14 +8,21 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using EnterpriseSystem.Entities;
 
 namespace EnterpriseSystem
 {
     public partial class AddProductForm : Form
     {
-        public AddProductForm()
+        private readonly Employee _employee;
+        private readonly Logger _logger;
+
+        public AddProductForm(Employee employee, Logger logger)
         {
             InitializeComponent();
+
+            _logger = logger;
+            _employee = employee;
 
             AddProduct_label.Left = (this.ClientSize.Width - AddProduct_label.Width) / 2;
             ProductName_textBox.Left = (this.ClientSize.Width - ProductName_textBox.Width) / 2;
@@ -51,6 +58,9 @@ namespace EnterpriseSystem
             {
                 ProductSellingPrice_textBox.Text = "1";
             }
+
+            _employee.CreateProduct(ProductName_textBox.Text, ProductType_textBox.Text, 
+                Convert.ToDecimal(ProductSellingPrice_textBox.Text));
         }
     }
 }

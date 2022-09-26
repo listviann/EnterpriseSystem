@@ -41,9 +41,9 @@
             this.GetProducts_label.ForeColor = System.Drawing.Color.White;
             this.GetProducts_label.Location = new System.Drawing.Point(12, 12);
             this.GetProducts_label.Name = "GetProducts_label";
-            this.GetProducts_label.Size = new System.Drawing.Size(351, 62);
+            this.GetProducts_label.Size = new System.Drawing.Size(312, 62);
             this.GetProducts_label.TabIndex = 20;
-            this.GetProducts_label.Text = "Get employees";
+            this.GetProducts_label.Text = "Get products";
             // 
             // Products_listBox
             // 
@@ -65,6 +65,7 @@
             this.DeleteProduct_button.TabIndex = 18;
             this.DeleteProduct_button.Text = "Delete";
             this.DeleteProduct_button.UseVisualStyleBackColor = false;
+            this.DeleteProduct_button.Click += new System.EventHandler(this.DeleteProduct_button_Click);
             // 
             // EditProduct_button
             // 
@@ -94,6 +95,7 @@
             this.MinimumSize = new System.Drawing.Size(500, 595);
             this.Name = "GetProductsForm";
             this.Text = "GetProductsForm";
+            this.Load += new System.EventHandler(this.GetProductsForm_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 

@@ -1,4 +1,6 @@
-﻿using System;
+﻿using EnterpriseSystem.Logging;
+using EnterpriseSystem.Entities;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -12,9 +14,23 @@ namespace EnterpriseSystem
 {
     public partial class UpdateProductForm : Form
     {
-        public UpdateProductForm()
+        private readonly Logger _logger;
+        private readonly Employee _employee;
+        private readonly int _id;
+
+        public UpdateProductForm(Employee employee, Logger logger, int id)
         {
             InitializeComponent();
+
+            _logger = logger;
+            _employee = employee;
+            _id = id;
+
+            Product? product = _employee.GetProducts().FirstOrDefault(p => p.Id == _id);
+
+            ProductName_textBox.Text = product!.Name;
+            ProductType_textBox.Text = product.ProductType;
+            ProductSellingPrice_textBox.Text = product.SellingPrice.ToString();
 
             EditProduct_label.Left = (this.ClientSize.Width - EditProduct_button.Width) / 2;
             EditProduct_button.Left = (this.ClientSize.Width - EditProduct_button.Width) / 2;
@@ -50,6 +66,11 @@ namespace EnterpriseSystem
             {
                 ProductSellingPrice_textBox.Text = "1";
             }
+
+            _employee.UpdateProduct(_id, ProductName_textBox.Text, 
+                ProductType_textBox.Text, Convert.ToDecimal(ProductSellingPrice_textBox.Text));
+
+            this.Close();
         }
     }
 }

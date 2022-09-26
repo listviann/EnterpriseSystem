@@ -45,8 +45,8 @@ namespace EnterpriseSystem
 
         private void LoginAsEmployee_button_Click(object sender, EventArgs e)
         {
-            EmployeeForm employeeForm = new();
-            employeeForm.Show();
+            EmpLoginForm empLoginForm = new(_manager, _logger);
+            empLoginForm.Show();
         }
     }
 }
