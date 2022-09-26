@@ -8,6 +8,7 @@ using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Diagnostics;
 
 namespace EnterpriseSystem
 {
@@ -53,6 +54,7 @@ namespace EnterpriseSystem
             {
                 _employees.Add(emp!);
                 SortAllEmployees();
+                Debug.WriteLine(_employees.Count);
                 _logger.Log($"Manager added a new employee with id: {emp!.Id}", Config.FILEPATH);
             }
         }

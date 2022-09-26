@@ -2,16 +2,25 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Diagnostics;
 using System.Drawing;
+using System.Drawing.Imaging;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Xml.Linq;
+using EnterpriseSystem.Entities;
+using EnterpriseSystem.Logging;
+using EnterpriseSystem.Models;
 
 namespace EnterpriseSystem
 {
     public partial class AddEmployeeForm : Form
     {
+        private readonly Logger _logger;
+        private readonly Manager _manager;
+
         public AddEmployeeForm()
         {
             InitializeComponent();
@@ -29,6 +38,15 @@ namespace EnterpriseSystem
             CreateEmployee_button.Left = (this.ClientSize.Width - CreateEmployee_button.Width) / 2;
             ClearFields_button.Left = (this.ClientSize.Width - ClearFields_button.Width) / 2;
             DateFields_panel.Left = (this.ClientSize.Width - DateFields_panel.Width) / 2;
+
+            EmployeePosition_comboBox.DataSource = Enum.GetValues(typeof(Position));
+            EmployeeType_comboBox.DataSource = Enum.GetValues(typeof(EmployeeType));
+
+            _logger = Logger.Instance;
+            _manager = new Manager(_logger);
+
+            _manager.ModelNotify += ShowMessage;
+            _logger.Notify += LoggingFunctions.LogMessage;
         }
 
         private void AddEmployeeForm_Load(object sender, EventArgs e)
@@ -118,6 +136,20 @@ namespace EnterpriseSystem
                 EmployeeBirthMonth_textBox.Text = "1";
                 EmployeeBirthYear_textBox.Text = "0001";
             }
+
+            decimal salary = Convert.ToDecimal(EmployeeSalary_textBox.Text);
+            int day = Convert.ToInt32(EmployeeBirthDay_textBox.Text);
+            int month = Convert.ToInt32(EmployeeBirthMonth_textBox.Text);
+            int year = Convert.ToInt32(EmployeeBirthYear_textBox.Text);
+            DateTime date = new DateTime(year, month, day);
+
+            _manager.CreateEmployee(EmployeeName_textBox.Text, EmployeeEmail_textBox.Text, EmployeePhoneNumber_textBox.Text, date, 
+                (Position)EmployeePosition_comboBox.SelectedItem, (EmployeeType)EmployeeType_comboBox.SelectedItem, salary);
+        }
+
+        private void ShowMessage(string message)
+        {
+            MessageBox.Show(message);
         }
     }
 }

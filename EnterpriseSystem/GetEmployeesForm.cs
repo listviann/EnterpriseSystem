@@ -1,4 +1,6 @@
-﻿using System;
+﻿using EnterpriseSystem.Entities;
+using EnterpriseSystem.Logging;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -21,7 +23,16 @@ namespace EnterpriseSystem
 
         private void GetEmployeesForm_Load(object sender, EventArgs e)
         {
+            Logger logger = Logger.Instance;
+            logger.Notify += LoggingFunctions.LogMessage;
+            Manager manager = new Manager(logger);
+            manager.ModelNotify += ShowMessage;
+            Employees_listBox.DataSource = (List<Employee>)manager.GetEmployees();
+        }
 
+        private void ShowMessage(string message)
+        {
+            MessageBox.Show(message);
         }
 
         private void EditEmployee_button_Click(object sender, EventArgs e)

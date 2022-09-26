@@ -1,4 +1,5 @@
-﻿using System;
+﻿using EnterpriseSystem.Logging;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -45,7 +46,7 @@ namespace EnterpriseSystem
         }
 
         private void CreateProduct_button_Click(object sender, EventArgs e)
-        {
+        { 
             if (string.IsNullOrWhiteSpace(ProductSellingPrice_textBox.Text))
             {
                 ProductSellingPrice_textBox.Text = "1";
