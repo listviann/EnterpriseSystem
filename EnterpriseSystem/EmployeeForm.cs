@@ -1,4 +1,6 @@
-﻿using System;
+﻿using Accessibility;
+using EnterpriseSystem.Logging;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -12,9 +14,15 @@ namespace EnterpriseSystem
 {
     public partial class EmployeeForm : Form
     {
+        //private readonly Logger _logger;
+        //private readonly Manager _manager;
+
         public EmployeeForm()
         {
             InitializeComponent();
+
+            //_logger = logger;
+            //_manager = manager;
 
             EmployeeHeader_label.Left = (this.ClientSize.Width - EmployeeHeader_label.Width) / 2;
         }

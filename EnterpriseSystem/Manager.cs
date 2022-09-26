@@ -109,7 +109,7 @@ namespace EnterpriseSystem
         // covariation is used here
         public IEnumerable<Employee> GetEmployees()
         {
-            _logger.Log("All employees:", Config.FILEPATH);
+            _logger.Log("ALL EMPLOYEES", Config.FILEPATH);
             foreach (var e in _employees)
             {
                 _logger.Log(e.ToString(), Config.FILEPATH);

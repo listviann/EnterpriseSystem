@@ -14,20 +14,24 @@ namespace EnterpriseSystem
 {
     public partial class GetEmployeesForm : Form
     {
-        public GetEmployeesForm()
+        private readonly Logger _logger;
+        private readonly Manager _manager;
+
+        public GetEmployeesForm(Manager manager, Logger logger)
         {
             InitializeComponent();
+
+            _manager = manager;
+            _logger = logger;
+
+            Employees_listBox.DataSource = _manager.GetEmployees().ToList();
 
             GetEmployees_label.Left = (this.ClientSize.Width - GetEmployees_label.Width) / 2;
         }
 
         private void GetEmployeesForm_Load(object sender, EventArgs e)
         {
-            Logger logger = Logger.Instance;
-            logger.Notify += LoggingFunctions.LogMessage;
-            Manager manager = new Manager(logger);
-            manager.ModelNotify += ShowMessage;
-            Employees_listBox.DataSource = (List<Employee>)manager.GetEmployees();
+
         }
 
         private void ShowMessage(string message)
@@ -37,11 +41,21 @@ namespace EnterpriseSystem
 
         private void EditEmployee_button_Click(object sender, EventArgs e)
         {
-            UpdateEmployeeForm updateEmployeeForm = new();
+            Employee emp = (Employee)Employees_listBox.SelectedItem;
+            int empId = emp.Id;
+
+            UpdateEmployeeForm updateEmployeeForm = new(_manager, _logger, empId);
             updateEmployeeForm.Show();
         }
 
         private void DeleteEmployee_button_Click(object sender, EventArgs e)
+        {
+            Employee emp = (Employee)Employees_listBox.SelectedItem;
+            int empId = emp.Id;
+            _manager.DeleteEmployee(empId);
+        }
+
+        private void Employees_listBox_SelectedIndexChanged(object sender, EventArgs e)
         {
 
         }

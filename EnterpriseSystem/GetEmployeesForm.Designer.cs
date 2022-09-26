@@ -68,6 +68,7 @@
             this.Employees_listBox.Name = "Employees_listBox";
             this.Employees_listBox.Size = new System.Drawing.Size(458, 384);
             this.Employees_listBox.TabIndex = 15;
+            this.Employees_listBox.SelectedIndexChanged += new System.EventHandler(this.Employees_listBox_SelectedIndexChanged);
             // 
             // GetEmployees_label
             // 

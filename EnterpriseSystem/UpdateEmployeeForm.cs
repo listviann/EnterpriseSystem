@@ -1,4 +1,5 @@
-﻿using System;
+﻿using EnterpriseSystem.Logging;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -7,15 +8,36 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using EnterpriseSystem.Entities;
 
 namespace EnterpriseSystem
 {
     public partial class UpdateEmployeeForm : Form
     {
-        public UpdateEmployeeForm()
+        private readonly Logger _logger;
+        private readonly Manager _manager;
+        private readonly int _id;
+        //private readonly Employee _employee;
+
+        public UpdateEmployeeForm(Manager manager, Logger logger, int id)
         {
             InitializeComponent();
 
+            _manager = manager;
+            _manager.ModelNotify += ShowMessage;
+            _logger = logger;
+
+            Employee? emp = _manager.GetEmployeeById(id);
+            _id = id;
+            EmployeeName_textBox.Text = emp.Name;
+            EmployeeEmail_textBox.Text = emp.Email;
+            EmployeePhoneNumber_textBox.Text = emp.PhoneNumber;
+            EmployeeSalary_textBox.Text = emp.Salary.ToString();
+            EmployeeBirthDay_textBox.Text = emp.BirthDate.Day.ToString();
+            EmployeeBirthMonth_textBox.Text = emp.BirthDate.Month.ToString();
+            EmployeeBirthYear_textBox.Text = emp.BirthDate.Year.ToString();
+            EmployeePosition_comboBox.SelectedItem = emp.Position;
+            
             EditEmployee_label.Left = (this.ClientSize.Width - EditEmployee_label.Width) / 2;
             EmployeeName_textBox.Left = (this.ClientSize.Width - EmployeeName_textBox.Width) / 2;
             EmployeeEmail_textBox.Left = (this.ClientSize.Width - EmployeeEmail_textBox.Width) / 2;
@@ -27,6 +49,8 @@ namespace EnterpriseSystem
             EditEmployee_button.Left = (this.ClientSize.Width - EditEmployee_button.Width) / 2;
             ClearFields_button.Left = (this.ClientSize.Width - ClearFields_button.Width) / 2;
             DateFields_panel.Left = (this.ClientSize.Width - DateFields_panel.Width) / 2;
+
+            EmployeePosition_comboBox.DataSource = Enum.GetValues(typeof(Position));
         }
 
         private void UpdateEmployeeForm_Load(object sender, EventArgs e)
@@ -90,6 +114,20 @@ namespace EnterpriseSystem
                 EmployeeBirthMonth_textBox.Text = "1";
                 EmployeeBirthYear_textBox.Text = "0001";
             }
+
+            decimal salary = Convert.ToDecimal(EmployeeSalary_textBox.Text);
+            int day = Convert.ToInt32(EmployeeBirthDay_textBox.Text);
+            int month = Convert.ToInt32(EmployeeBirthMonth_textBox.Text);
+            int year = Convert.ToInt32(EmployeeBirthYear_textBox.Text);
+            DateTime birthDate = new DateTime(year, month, day);
+
+            _manager.UpdateEmployee(_id, EmployeeName_textBox.Text, EmployeeEmail_textBox.Text, EmployeePhoneNumber_textBox.Text,
+                birthDate, (Position)EmployeePosition_comboBox.SelectedItem, salary);
+        }
+
+        private void ShowMessage(string message)
+        {
+            MessageBox.Show(message);
         }
     }
 }

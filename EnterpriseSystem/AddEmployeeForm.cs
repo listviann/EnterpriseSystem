@@ -21,7 +21,7 @@ namespace EnterpriseSystem
         private readonly Logger _logger;
         private readonly Manager _manager;
 
-        public AddEmployeeForm()
+        public AddEmployeeForm(Manager manager, Logger logger)
         {
             InitializeComponent();
 
@@ -42,11 +42,13 @@ namespace EnterpriseSystem
             EmployeePosition_comboBox.DataSource = Enum.GetValues(typeof(Position));
             EmployeeType_comboBox.DataSource = Enum.GetValues(typeof(EmployeeType));
 
-            _logger = Logger.Instance;
-            _manager = new Manager(_logger);
+            //_logger = Logger.Instance;
+            //_manager = new Manager(_logger);
+            _logger = logger;
+            _manager = manager;
 
             _manager.ModelNotify += ShowMessage;
-            _logger.Notify += LoggingFunctions.LogMessage;
+            //_logger.Notify += LoggingFunctions.LogMessage;
         }
 
         private void AddEmployeeForm_Load(object sender, EventArgs e)

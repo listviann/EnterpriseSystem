@@ -1,15 +1,20 @@
+using EnterpriseSystem.Logging;
+
 namespace EnterpriseSystem
 {
     public partial class MainForm : Form
     {
+        private readonly Logger _logger;
+        private readonly Manager _manager;
+
         public MainForm()
         {
             InitializeComponent();
 
-            //
-            // Centering controls:
-            //
-            // centering horizontally
+            _logger = Logger.Instance;
+            _logger.Notify += LoggingFunctions.LogMessage;
+            _manager = new Manager(_logger);
+
             Welcome_label.Left = (this.ClientSize.Width - Welcome_label.Width) / 2;
         }
 
@@ -25,7 +30,7 @@ namespace EnterpriseSystem
 
         private void LoginAsManager_button_Click(object sender, EventArgs e)
         {
-            ManagerForm managerForm = new();
+            ManagerForm managerForm = new(_manager, _logger);
             managerForm.Show();
         }
 
