@@ -2,6 +2,14 @@ using EnterpriseSystem.Logging;
 
 namespace EnterpriseSystem
 {
+    public static class DialogMessageFunctions
+    {
+        public static void ShowMessage(string message)
+        {
+            MessageBox.Show(message);
+        }
+    }
+
     public partial class MainForm : Form
     {
         private readonly Logger _logger;
@@ -14,6 +22,7 @@ namespace EnterpriseSystem
             _logger = Logger.Instance;
             _logger.Notify += LoggingFunctions.LogMessage;
             _manager = new Manager(_logger);
+            _manager.ModelNotify += DialogMessageFunctions.ShowMessage;
 
             Welcome_label.Left = (this.ClientSize.Width - Welcome_label.Width) / 2;
         }

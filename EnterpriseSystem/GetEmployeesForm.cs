@@ -26,6 +26,13 @@ namespace EnterpriseSystem
 
             Employees_listBox.DataSource = _manager.GetEmployees().ToList();
 
+            if (Employees_listBox.Items.Count == 0)
+            {
+                EditEmployee_button.Enabled = false;
+                DeleteEmployee_button.Enabled = false;
+            }
+
+
             GetEmployees_label.Left = (this.ClientSize.Width - GetEmployees_label.Width) / 2;
         }
 
@@ -53,6 +60,9 @@ namespace EnterpriseSystem
             Employee emp = (Employee)Employees_listBox.SelectedItem;
             int empId = emp.Id;
             _manager.DeleteEmployee(empId);
+
+            Employees_listBox.DataSource = null;
+            Employees_listBox.DataSource = _manager.GetEmployees().ToList();
         }
 
         private void Employees_listBox_SelectedIndexChanged(object sender, EventArgs e)

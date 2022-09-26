@@ -24,7 +24,7 @@ namespace EnterpriseSystem
             InitializeComponent();
 
             _manager = manager;
-            _manager.ModelNotify += ShowMessage;
+            //_manager.ModelNotify += ShowMessage;
             _logger = logger;
 
             Employee? emp = _manager.GetEmployeeById(id);
@@ -123,6 +123,8 @@ namespace EnterpriseSystem
 
             _manager.UpdateEmployee(_id, EmployeeName_textBox.Text, EmployeeEmail_textBox.Text, EmployeePhoneNumber_textBox.Text,
                 birthDate, (Position)EmployeePosition_comboBox.SelectedItem, salary);
+
+            this.Close();
         }
 
         private void ShowMessage(string message)

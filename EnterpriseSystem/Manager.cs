@@ -109,7 +109,7 @@ namespace EnterpriseSystem
         // covariation is used here
         public IEnumerable<Employee> GetEmployees()
         {
-            _logger.Log("ALL EMPLOYEES", Config.FILEPATH);
+            _logger.Log("ALL EMPLOYEES LIST", Config.FILEPATH);
             foreach (var e in _employees)
             {
                 _logger.Log(e.ToString(), Config.FILEPATH);
@@ -127,7 +127,7 @@ namespace EnterpriseSystem
                 }
             }
 
-            _logger.Log("Hour employees;", Config.FILEPATH);
+            _logger.Log("HOUR WAGE EMPLOYEES LIST", Config.FILEPATH);
             foreach (var e in _hourEmployees)
             {
                 _logger.Log(e.ToString(), Config.FILEPATH);
@@ -144,7 +144,7 @@ namespace EnterpriseSystem
                     _fixedEmployees.Add((FixedEmployee)e);
                 }
             }
-            _logger.Log("Fixed employees:", Config.FILEPATH);
+            _logger.Log("FIXED WAGE EMPLOYEES LIST", Config.FILEPATH);
             foreach (var e in _fixedEmployees)
             {
                 _logger.Log(e.ToString(), Config.FILEPATH);
@@ -161,6 +161,8 @@ namespace EnterpriseSystem
                 SortAllEmployees();
                 SortHourEmployees();
                 SortFixedEmployees();
+
+                _logger.Log($"Employee with id: {emp.Id} has been deleted", Config.FILEPATH);
             }
             else
             {

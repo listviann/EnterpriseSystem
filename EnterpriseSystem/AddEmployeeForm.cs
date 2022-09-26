@@ -12,7 +12,7 @@ using System.Windows.Forms;
 using System.Xml.Linq;
 using EnterpriseSystem.Entities;
 using EnterpriseSystem.Logging;
-using EnterpriseSystem.Models;
+
 
 namespace EnterpriseSystem
 {
@@ -47,7 +47,7 @@ namespace EnterpriseSystem
             _logger = logger;
             _manager = manager;
 
-            _manager.ModelNotify += ShowMessage;
+            //_manager.ModelNotify += ShowMessage;
             //_logger.Notify += LoggingFunctions.LogMessage;
         }
 
