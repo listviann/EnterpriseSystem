@@ -21,7 +21,12 @@ namespace EnterpriseSystem
 
         private void Quit_button_Click(object sender, EventArgs e)
         {
-            this.Close();
+            string message = "Are you sure you want to quit?";
+            string caption = "Exit";
+            var result = MessageBox.Show(message, caption, MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+
+            if (result == DialogResult.Yes)
+                this.Close();
         }
 
         private void MainForm_Load(object sender, EventArgs e)
