@@ -2,14 +2,6 @@ using EnterpriseSystem.Logging;
 
 namespace EnterpriseSystem
 {
-    public static class DialogMessageFunctions
-    {
-        public static void ShowMessage(string message)
-        {
-            MessageBox.Show(message);
-        }
-    }
-
     public partial class MainForm : Form
     {
         private readonly Logger _logger;

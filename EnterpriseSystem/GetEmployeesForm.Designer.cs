@@ -63,6 +63,7 @@
             // Employees_listBox
             // 
             this.Employees_listBox.FormattingEnabled = true;
+            this.Employees_listBox.HorizontalScrollbar = true;
             this.Employees_listBox.ItemHeight = 20;
             this.Employees_listBox.Location = new System.Drawing.Point(12, 81);
             this.Employees_listBox.Name = "Employees_listBox";

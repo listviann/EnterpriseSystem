@@ -30,13 +30,13 @@ namespace EnterpriseSystem.Entities
 
         public override void UpdateProduct(int id, string name, string productType, decimal sellingPrice)
         {
-            _logger.Log($"Hour salary employee [{Id} - {Name}] updated the product.", Config.FILEPATH);
+            _logger.Log($"Hour salary employee [{Id} - {Name}] updated the product with id: {id}", Config.FILEPATH);
             base.UpdateProduct(id, name, productType, sellingPrice);
         }
 
         public override void DeleteProduct(int id)
         {
-            _logger.Log($"Hour salary employee [{Id} - {Name}] deleted the product.", Config.FILEPATH);
+            _logger.Log($"Hour salary employee [{Id} - {Name}] deleted the product with id: {id}", Config.FILEPATH);
             base.DeleteProduct(id);
         }
         #endregion
