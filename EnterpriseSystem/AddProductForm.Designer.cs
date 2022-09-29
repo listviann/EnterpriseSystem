@@ -87,7 +87,7 @@
             // 
             // CreateProduct_button
             // 
-            this.CreateProduct_button.BackColor = System.Drawing.Color.Purple;
+            this.CreateProduct_button.BackColor = System.Drawing.SystemColors.ControlDarkDark;
             this.CreateProduct_button.Font = new System.Drawing.Font("Segoe UI", 19.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.CreateProduct_button.ForeColor = System.Drawing.Color.White;
             this.CreateProduct_button.Location = new System.Drawing.Point(118, 208);
@@ -102,7 +102,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackColor = System.Drawing.Color.DarkViolet;
+            this.BackColor = System.Drawing.Color.Black;
             this.ClientSize = new System.Drawing.Size(482, 363);
             this.Controls.Add(this.ClearFields_button);
             this.Controls.Add(this.CreateProduct_button);

@@ -44,6 +44,7 @@
             // 
             // EmpId_textBox
             // 
+            this.EmpId_textBox.BackColor = System.Drawing.SystemColors.ControlLight;
             this.EmpId_textBox.Location = new System.Drawing.Point(83, 43);
             this.EmpId_textBox.Name = "EmpId_textBox";
             this.EmpId_textBox.Size = new System.Drawing.Size(139, 27);
@@ -52,22 +53,25 @@
             // 
             // EmpSignIn_button
             // 
+            this.EmpSignIn_button.BackColor = System.Drawing.Color.DimGray;
             this.EmpSignIn_button.Location = new System.Drawing.Point(83, 83);
             this.EmpSignIn_button.Name = "EmpSignIn_button";
             this.EmpSignIn_button.Size = new System.Drawing.Size(139, 32);
             this.EmpSignIn_button.TabIndex = 2;
             this.EmpSignIn_button.Text = "Sign in";
-            this.EmpSignIn_button.UseVisualStyleBackColor = true;
+            this.EmpSignIn_button.UseVisualStyleBackColor = false;
             this.EmpSignIn_button.Click += new System.EventHandler(this.EmpSignIn_button_Click);
             // 
             // EmpLoginForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackColor = System.Drawing.Color.Black;
             this.ClientSize = new System.Drawing.Size(312, 127);
             this.Controls.Add(this.EmpSignIn_button);
             this.Controls.Add(this.EmpId_textBox);
             this.Controls.Add(this.EmpId_label);
+            this.ForeColor = System.Drawing.Color.White;
             this.MaximizeBox = false;
             this.MaximumSize = new System.Drawing.Size(330, 174);
             this.MinimizeBox = false;

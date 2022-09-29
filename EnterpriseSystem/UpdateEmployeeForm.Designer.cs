@@ -122,7 +122,7 @@
             // 
             // EditEmployee_button
             // 
-            this.EditEmployee_button.BackColor = System.Drawing.Color.Orchid;
+            this.EditEmployee_button.BackColor = System.Drawing.SystemColors.ControlDarkDark;
             this.EditEmployee_button.Font = new System.Drawing.Font("Segoe UI", 19.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.EditEmployee_button.ForeColor = System.Drawing.Color.White;
             this.EditEmployee_button.Location = new System.Drawing.Point(11, 340);
@@ -190,7 +190,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackColor = System.Drawing.Color.DarkViolet;
+            this.BackColor = System.Drawing.Color.Black;
             this.CausesValidation = false;
             this.ClientSize = new System.Drawing.Size(482, 503);
             this.Controls.Add(this.DateFields_panel);

@@ -40,7 +40,7 @@
             // 
             // LoginAsManager_button
             // 
-            this.LoginAsManager_button.BackColor = System.Drawing.Color.Orchid;
+            this.LoginAsManager_button.BackColor = System.Drawing.Color.DimGray;
             this.LoginAsManager_button.Font = new System.Drawing.Font("Segoe UI", 19.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.LoginAsManager_button.ForeColor = System.Drawing.Color.White;
             this.LoginAsManager_button.Location = new System.Drawing.Point(12, 110);
@@ -53,7 +53,7 @@
             // 
             // LoginAsEmployee_button
             // 
-            this.LoginAsEmployee_button.BackColor = System.Drawing.Color.Purple;
+            this.LoginAsEmployee_button.BackColor = System.Drawing.SystemColors.ControlDarkDark;
             this.LoginAsEmployee_button.Font = new System.Drawing.Font("Segoe UI", 19.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.LoginAsEmployee_button.ForeColor = System.Drawing.Color.White;
             this.LoginAsEmployee_button.Location = new System.Drawing.Point(12, 216);
@@ -90,7 +90,7 @@
             // 
             // MainFormMenu_menuStrip
             // 
-            this.MainFormMenu_menuStrip.BackColor = System.Drawing.Color.MediumSlateBlue;
+            this.MainFormMenu_menuStrip.BackColor = System.Drawing.Color.Black;
             this.MainFormMenu_menuStrip.ImageScalingSize = new System.Drawing.Size(20, 20);
             this.MainFormMenu_menuStrip.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.fileToolStripMenuItem,
@@ -121,7 +121,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackColor = System.Drawing.Color.DarkViolet;
+            this.BackColor = System.Drawing.Color.Black;
             this.ClientSize = new System.Drawing.Size(482, 453);
             this.Controls.Add(this.Quit_button);
             this.Controls.Add(this.Welcome_label);
