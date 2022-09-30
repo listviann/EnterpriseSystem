@@ -3,6 +3,7 @@ using System.ComponentModel.DataAnnotations;
 using EnterpriseSystem.Exceptions;
 using EnterpriseSystem.Logging;
 using System.Xml.Serialization;
+using Newtonsoft.Json;
 
 namespace EnterpriseSystem.Entities
 {
@@ -16,7 +17,6 @@ namespace EnterpriseSystem.Entities
     public abstract class Employee : IValidationHelper<Product>
     {
         public event Action<string> ModelNotify;
-
         protected readonly Logger _logger;
 
         private static readonly Dictionary<Position, decimal> _bonusList = new Dictionary<Position, decimal>()
@@ -50,7 +50,10 @@ namespace EnterpriseSystem.Entities
         [BirthDateMaxValue]
         public DateTime BirthDate { get; set; }
 
-        public SinglyLinkedList<Product> Products { get; set; } = new();
+        //[JsonIgnore]
+        //public SinglyLinkedList<Product> Products { get; set; } = new();
+
+        public List<Product> ProductsList { get; set; } = new();
 
         public Position Position
         {
@@ -85,12 +88,12 @@ namespace EnterpriseSystem.Entities
         #region CRUD operations
         public virtual void CreateProduct(string name, string productType, decimal sellingPrice)
         {
-            int productId = Products.Count + 1;
+            int productId = ProductsList.Count + 1;
             Product product = new(productId, name, productType, sellingPrice);
 
             if (IsValidObject(product))
             {
-                Products.Add(product);
+                ProductsList.Add(product);
             }
         }
 
@@ -103,7 +106,7 @@ namespace EnterpriseSystem.Entities
                 return;
             }
 
-            Product? p = Products.FirstOrDefault(p => p.Id == id);
+            Product? p = ProductsList.FirstOrDefault(p => p.Id == id);
             if (p != null)
             {
                 p.Name = name;
@@ -116,22 +119,21 @@ namespace EnterpriseSystem.Entities
             }
         }
 
-        public virtual SinglyLinkedList<Product> GetProducts()
+        public virtual void GetProducts()
         {
             _logger.Log("Products created by employee", Config.FILEPATH);
-            foreach (var p in Products)
+            foreach (var p in ProductsList)
             {
                 _logger.Log(p.ToString(), Config.FILEPATH);
             }
-            return Products;
         }
 
         public virtual void DeleteProduct(int id)
         {
-            Product? p = Products.FirstOrDefault(p => p.Id == id);
+            Product? p = ProductsList.FirstOrDefault(p => p.Id == id);
             if (p != null)
             {
-                Products.Delete(p);
+                ProductsList.Remove(p);
             }
             else
             {

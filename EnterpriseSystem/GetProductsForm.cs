@@ -23,8 +23,9 @@ namespace EnterpriseSystem
             
             _logger = logger;
             _employee = employee;
-            
-            Products_listBox.DataSource = _employee.GetProducts().ToList();
+
+            Products_listBox.DataSource = _employee.ProductsList;
+            _employee.GetProducts();
 
             if (Products_listBox.Items.Count == 0)
             {
@@ -55,7 +56,7 @@ namespace EnterpriseSystem
             _employee.DeleteProduct(prodId);
 
             Products_listBox.DataSource = null;
-            Products_listBox.DataSource = _employee.GetProducts().ToList();
+            Products_listBox.DataSource = _employee.ProductsList;
         }
     }
 }

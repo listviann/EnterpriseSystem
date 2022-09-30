@@ -15,7 +15,10 @@
     <Folder Include="Serialization\Abstract\" />
     <Folder Include="Serialization\Json\" />
     <Folder Include="Serialization\Xml\" />
-    <Folder Include="Service\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Newtonsoft.Json" Version="13.0.1" />
   </ItemGroup>
 
 </Project>

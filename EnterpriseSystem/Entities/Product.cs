@@ -1,8 +1,10 @@
 ﻿using System.ComponentModel.DataAnnotations;
 using EnterpriseSystem.Service;
+using Newtonsoft.Json;
 
 namespace EnterpriseSystem.Entities
 {
+    [JsonObject]
     public class Product
     {
         #region Properties

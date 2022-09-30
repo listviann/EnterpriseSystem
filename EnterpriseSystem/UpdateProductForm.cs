@@ -26,7 +26,7 @@ namespace EnterpriseSystem
             _employee = employee;
             _id = id;
 
-            Product? product = _employee.GetProducts().FirstOrDefault(p => p.Id == _id);
+            Product? product = _employee.ProductsList.FirstOrDefault(p => p.Id == _id);
 
             ProductName_textBox.Text = product!.Name;
             ProductType_textBox.Text = product.ProductType;

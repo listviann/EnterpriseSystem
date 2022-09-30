@@ -22,7 +22,7 @@ namespace EnterpriseSystem
         public event Action<string> ModelNotify;
 
         #region Private fields
-        private readonly SinglyLinkedList<Employee> _employees = new SinglyLinkedList<Employee>();
+        public SinglyLinkedList<Employee> Employees { get; set; } = new SinglyLinkedList<Employee>();
         private readonly SinglyLinkedList<FixedEmployee> _fixedEmployees = new SinglyLinkedList<FixedEmployee>();
         private readonly SinglyLinkedList<HourEmployee> _hourEmployees = new SinglyLinkedList<HourEmployee>();
         private readonly Logger _logger;
@@ -37,7 +37,7 @@ namespace EnterpriseSystem
         public void CreateEmployee(string name, string email, string phoneNumber, DateTime birthDate,
             Position position, EmployeeType empType, decimal salary)
         {
-            int id = _employees.Count + 1;
+            int id = Employees.Count + 1;
             Employee? emp = null;
 
             switch (empType)
@@ -52,9 +52,9 @@ namespace EnterpriseSystem
 
             if (IsValidObject(emp!))
             {
-                _employees.Add(emp!);
+                Employees.Add(emp!);
                 SortAllEmployees();
-                Debug.WriteLine(_employees.Count);
+                Debug.WriteLine(Employees.Count);
                 _logger.Log($"Manager added a new employee with id: {emp!.Id}", Config.FILEPATH);
             }
         }
@@ -71,7 +71,7 @@ namespace EnterpriseSystem
                 return;
             }
 
-            Employee? emp = _employees.FirstOrDefault(e => e.Id == id);
+            Employee? emp = Employees.FirstOrDefault(e => e.Id == id);
             if (emp != null)
             {
                 emp.Name = name;
@@ -95,7 +95,7 @@ namespace EnterpriseSystem
 
         public Employee GetEmployeeById(int id)
         {
-            Employee? emp = _employees.FirstOrDefault(e => e.Id == id);
+            Employee? emp = Employees.FirstOrDefault(e => e.Id == id);
             if (emp != null)
             {
                 return emp;
@@ -110,16 +110,16 @@ namespace EnterpriseSystem
         public IEnumerable<Employee> GetEmployees()
         {
             _logger.Log("ALL EMPLOYEES LIST", Config.FILEPATH);
-            foreach (var e in _employees)
+            foreach (var e in Employees)
             {
                 _logger.Log(e.ToString(), Config.FILEPATH);
             }
-            return _employees;
+            return Employees;
         }
 
         public IEnumerable<Employee> GetHourEmployees()
         {
-            foreach (var e in _employees)
+            foreach (var e in Employees)
             {
                 if (e is HourEmployee)
                 {
@@ -137,7 +137,7 @@ namespace EnterpriseSystem
 
         public IEnumerable<Employee> GetFixedEmployees()
         {
-            foreach (var e in _employees)
+            foreach (var e in Employees)
             {
                 if (e is FixedEmployee)
                 {
@@ -154,10 +154,10 @@ namespace EnterpriseSystem
 
         public void DeleteEmployee(int id)
         {
-            Employee? emp = _employees?.FirstOrDefault(e => e.Id == id);
+            Employee? emp = Employees?.FirstOrDefault(e => e.Id == id);
             if (emp != null)
             {
-                _employees?.Delete(emp);
+                Employees?.Delete(emp);
                 SortAllEmployees();
                 SortHourEmployees();
                 SortFixedEmployees();
@@ -174,7 +174,7 @@ namespace EnterpriseSystem
         #region Sorting
         private void SortAllEmployees()
         {
-            _employees.SortAll(new EmployeeSorter());
+            Employees.SortAll(new EmployeeSorter());
         }
 
         // contravariation is used here

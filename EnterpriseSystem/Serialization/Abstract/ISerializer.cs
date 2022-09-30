@@ -2,7 +2,7 @@
 {
     public interface ISerializer<T>
     {
-        public void SerializeData(T objects, string filename);
-        public T DeserializeData(string filename);
+        public void SerializeData(List<T> objects, string filename);
+        public List<T> DeserializeData(string filename);
     }
 }

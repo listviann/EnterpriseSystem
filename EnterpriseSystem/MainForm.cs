@@ -1,4 +1,8 @@
+using EnterpriseSystem.Entities;
 using EnterpriseSystem.Logging;
+using EnterpriseSystem.Serialization.Json;
+using EnterpriseSystem.Serialization.Xml;
+using System.Diagnostics;
 
 namespace EnterpriseSystem
 {
@@ -15,6 +19,11 @@ namespace EnterpriseSystem
             _logger.Notify += LoggingFunctions.LogMessage;
             _manager = new Manager(_logger);
             _manager.ModelNotify += DialogMessageFunctions.ShowMessage;
+
+            jsonSave_saveFileDialog.Filter = "JSON file(*.json)|*.json|Text file(*.txt)|*.txt";
+            jsonOpen_openFileDialog.Filter = "JSON file(*.json)|*.json|Text file(*.txt)|*.txt";
+            xmlSave_SaveFileDialog.Filter = "XML file(*.xml)|*.xml|Text file(*.txt)|*.txt";
+            xmlOpen_openFileDialog.Filter = "XML file(*.xml)|*.xml|Text file(*.txt)|*.txt";
 
             Welcome_label.Left = (this.ClientSize.Width - Welcome_label.Width) / 2;
         }
@@ -44,6 +53,97 @@ namespace EnterpriseSystem
         {
             EmpLoginForm empLoginForm = new(_manager, _logger);
             empLoginForm.Show();
+        }
+
+        private void jsonFileToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (jsonSave_saveFileDialog.ShowDialog() == DialogResult.Cancel)
+            {
+                return;
+            }
+
+            string filename = jsonSave_saveFileDialog.FileName;
+            SaveToJsonFile(filename);
+        }
+
+        private void xmlFileToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (xmlSave_SaveFileDialog.ShowDialog() == DialogResult.Cancel)
+            {
+                return;
+            }
+
+            string filename = jsonSave_saveFileDialog.FileName;
+            SaveToXmlFile(filename);
+        }
+
+        private void SaveToJsonFile(string filename)
+        {
+            JsonManager<Employee> jsonManager = new JsonManager<Employee>();
+            jsonManager.SerializeData(_manager.GetEmployees().ToList(), filename);
+        }
+
+        private void OpenJsonFile(string filename)
+        {
+            JsonManager<Employee> jsonManager = new JsonManager<Employee>();
+            try
+            {
+                List<Employee> objects = jsonManager.DeserializeData(filename);
+                
+                _manager.Employees.Clear();
+                foreach (var obj in objects)
+                {
+                    if (obj is HourEmployee)
+                    {
+                        _manager.CreateEmployee(obj.Name!, obj.Email!, obj.PhoneNumber!, obj.BirthDate,
+                            obj.Position, EmployeeType.Hour, obj.Salary);
+                        foreach (var prod in obj.ProductsList)
+                        {
+                            //_manager.GetEmployeeById(obj.Id).Products.Add(prod);
+                            Debug.WriteLine(prod + "TEST");
+                            _manager.GetEmployeeById(obj.Id).CreateProduct(prod.Name!, prod.ProductType!, prod.SellingPrice);
+                        }
+                    }
+                    else if (obj is FixedEmployee)
+                    {
+                        _manager.CreateEmployee(obj.Name!, obj.Email!, obj.PhoneNumber!, obj.BirthDate,
+                            obj.Position, EmployeeType.Fixed, obj.Salary);
+                        foreach (var prod in obj.ProductsList)
+                        {
+                            Debug.WriteLine(prod + " TEST PRODS");
+                            _manager.GetEmployeeById(obj.Id).CreateProduct(prod.Name!, prod.ProductType!, prod.SellingPrice);
+                        }
+                    }
+                    //_manager.Employees.Add(obj);
+
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+        }
+
+        private void SaveToXmlFile(string filename)
+        {
+            XmlManager<Employee> xmlManager = new XmlManager<Employee>();
+            xmlManager.SerializeData(_manager.GetEmployees().ToList(), filename);
+        }
+
+        private void jsonFileToolStripMenuItem1_Click(object sender, EventArgs e)
+        {
+            if (jsonOpen_openFileDialog.ShowDialog() == DialogResult.Cancel)
+            {
+                return;
+            }
+
+            string filename = jsonOpen_openFileDialog.FileName;
+            OpenJsonFile(filename);
+        }
+
+        private void xmlFileToolStripMenuItem1_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

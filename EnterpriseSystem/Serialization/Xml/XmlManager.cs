@@ -1,17 +1,29 @@
-﻿using EnterpriseSystem.Serialization.Abstract;
+﻿using EnterpriseSystem.Entities;
+using EnterpriseSystem.Serialization.Abstract;
+using System.Runtime.Serialization;
+using System.Xml.Serialization;
 
 namespace EnterpriseSystem.Serialization.Xml
 {
     public class XmlManager<T> : ISerializer<T>
     {
-        public T DeserializeData(string filename)
+        private readonly XmlSerializer _formatter = new XmlSerializer(typeof(List<Employee>));
+
+        public List<T> DeserializeData(string filename)
         {
-            throw new NotImplementedException();
+            using (FileStream fs = new FileStream(filename, FileMode.Open))
+            {
+                List<T> objects = (List<T>)_formatter.Deserialize(fs)!;
+                return objects;
+            }
         }
 
-        public void SerializeData(T objects, string filename)
+        public void SerializeData(List<T> objects, string filename)
         {
-            throw new NotImplementedException();
+            using (FileStream fs = new FileStream(filename, FileMode.Open))
+            {
+                _formatter.Serialize(fs, objects);
+            }
         }
     }
 }

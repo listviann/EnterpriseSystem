@@ -34,7 +34,17 @@
             this.Quit_button = new System.Windows.Forms.Button();
             this.MainFormMenu_menuStrip = new System.Windows.Forms.MenuStrip();
             this.fileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.saveAsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.jsonFileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.xmlFileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.aboutToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.jsonSave_saveFileDialog = new System.Windows.Forms.SaveFileDialog();
+            this.xmlSave_SaveFileDialog = new System.Windows.Forms.SaveFileDialog();
+            this.xmlOpen_openFileDialog = new System.Windows.Forms.OpenFileDialog();
+            this.jsonOpen_openFileDialog = new System.Windows.Forms.OpenFileDialog();
+            this.openToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.jsonFileToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
+            this.xmlFileToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.MainFormMenu_menuStrip.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -103,11 +113,37 @@
             // 
             // fileToolStripMenuItem
             // 
+            this.fileToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.saveAsToolStripMenuItem,
+            this.openToolStripMenuItem});
             this.fileToolStripMenuItem.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.fileToolStripMenuItem.ForeColor = System.Drawing.Color.White;
             this.fileToolStripMenuItem.Name = "fileToolStripMenuItem";
             this.fileToolStripMenuItem.Size = new System.Drawing.Size(49, 27);
             this.fileToolStripMenuItem.Text = "File";
+            // 
+            // saveAsToolStripMenuItem
+            // 
+            this.saveAsToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.jsonFileToolStripMenuItem,
+            this.xmlFileToolStripMenuItem});
+            this.saveAsToolStripMenuItem.Name = "saveAsToolStripMenuItem";
+            this.saveAsToolStripMenuItem.Size = new System.Drawing.Size(224, 28);
+            this.saveAsToolStripMenuItem.Text = "Save as";
+            // 
+            // jsonFileToolStripMenuItem
+            // 
+            this.jsonFileToolStripMenuItem.Name = "jsonFileToolStripMenuItem";
+            this.jsonFileToolStripMenuItem.Size = new System.Drawing.Size(224, 28);
+            this.jsonFileToolStripMenuItem.Text = "Json file";
+            this.jsonFileToolStripMenuItem.Click += new System.EventHandler(this.jsonFileToolStripMenuItem_Click);
+            // 
+            // xmlFileToolStripMenuItem
+            // 
+            this.xmlFileToolStripMenuItem.Name = "xmlFileToolStripMenuItem";
+            this.xmlFileToolStripMenuItem.Size = new System.Drawing.Size(224, 28);
+            this.xmlFileToolStripMenuItem.Text = "Xml file";
+            this.xmlFileToolStripMenuItem.Click += new System.EventHandler(this.xmlFileToolStripMenuItem_Click);
             // 
             // aboutToolStripMenuItem
             // 
@@ -116,6 +152,37 @@
             this.aboutToolStripMenuItem.Name = "aboutToolStripMenuItem";
             this.aboutToolStripMenuItem.Size = new System.Drawing.Size(71, 27);
             this.aboutToolStripMenuItem.Text = "About";
+            // 
+            // xmlOpen_openFileDialog
+            // 
+            this.xmlOpen_openFileDialog.FileName = "openFileDialog1";
+            // 
+            // jsonOpen_openFileDialog
+            // 
+            this.jsonOpen_openFileDialog.FileName = "openFileDialog2";
+            // 
+            // openToolStripMenuItem
+            // 
+            this.openToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.jsonFileToolStripMenuItem1,
+            this.xmlFileToolStripMenuItem1});
+            this.openToolStripMenuItem.Name = "openToolStripMenuItem";
+            this.openToolStripMenuItem.Size = new System.Drawing.Size(224, 28);
+            this.openToolStripMenuItem.Text = "Open";
+            // 
+            // jsonFileToolStripMenuItem1
+            // 
+            this.jsonFileToolStripMenuItem1.Name = "jsonFileToolStripMenuItem1";
+            this.jsonFileToolStripMenuItem1.Size = new System.Drawing.Size(224, 28);
+            this.jsonFileToolStripMenuItem1.Text = "Json file";
+            this.jsonFileToolStripMenuItem1.Click += new System.EventHandler(this.jsonFileToolStripMenuItem1_Click);
+            // 
+            // xmlFileToolStripMenuItem1
+            // 
+            this.xmlFileToolStripMenuItem1.Name = "xmlFileToolStripMenuItem1";
+            this.xmlFileToolStripMenuItem1.Size = new System.Drawing.Size(224, 28);
+            this.xmlFileToolStripMenuItem1.Text = "Xml file";
+            this.xmlFileToolStripMenuItem1.Click += new System.EventHandler(this.xmlFileToolStripMenuItem1_Click);
             // 
             // MainForm
             // 
@@ -151,5 +218,15 @@
         private MenuStrip MainFormMenu_menuStrip;
         private ToolStripMenuItem fileToolStripMenuItem;
         private ToolStripMenuItem aboutToolStripMenuItem;
+        private ToolStripMenuItem saveAsToolStripMenuItem;
+        private ToolStripMenuItem jsonFileToolStripMenuItem;
+        private ToolStripMenuItem xmlFileToolStripMenuItem;
+        private SaveFileDialog jsonSave_saveFileDialog;
+        private SaveFileDialog xmlSave_SaveFileDialog;
+        private OpenFileDialog xmlOpen_openFileDialog;
+        private OpenFileDialog jsonOpen_openFileDialog;
+        private ToolStripMenuItem openToolStripMenuItem;
+        private ToolStripMenuItem jsonFileToolStripMenuItem1;
+        private ToolStripMenuItem xmlFileToolStripMenuItem1;
     }
 }

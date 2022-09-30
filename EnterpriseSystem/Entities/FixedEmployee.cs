@@ -34,10 +34,10 @@ namespace EnterpriseSystem.Entities
             base.DeleteProduct(id);
         }
 
-        public override SinglyLinkedList<Product> GetProducts()
+        public override void GetProducts()
         {
             _logger.Log($"Products created by a fixed salary employee [{Id} - {Name}]:", Config.FILEPATH);
-            return base.GetProducts();
+            base.GetProducts();
         }
         #endregion
 

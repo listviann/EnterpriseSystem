@@ -22,10 +22,10 @@ namespace EnterpriseSystem.Entities
             base.CreateProduct(name, productType, sellingPrice);
         }
 
-        public override SinglyLinkedList<Product> GetProducts()
+        public override void GetProducts()
         {
             _logger.Log($"Products created by a fixed salary employee [{Id} - {Name}]:", Config.FILEPATH);
-            return base.GetProducts();
+            base.GetProducts();
         }
 
         public override void UpdateProduct(int id, string name, string productType, decimal sellingPrice)
