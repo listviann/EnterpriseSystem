@@ -50,9 +50,6 @@ namespace EnterpriseSystem.Entities
         [BirthDateMaxValue]
         public DateTime BirthDate { get; set; }
 
-        //[JsonIgnore]
-        //public SinglyLinkedList<Product> Products { get; set; } = new();
-
         public List<Product> ProductsList { get; set; } = new();
 
         public Position Position
@@ -62,7 +59,6 @@ namespace EnterpriseSystem.Entities
             {
                 _position = value;
                 _bonus = _bonusList[_position];
-                //Debug.WriteLine(_bonus);
             }
         }
 
@@ -94,6 +90,7 @@ namespace EnterpriseSystem.Entities
             if (IsValidObject(product))
             {
                 ProductsList.Add(product);
+                ProductsList.Sort(new ProductSorter());
             }
         }
 
@@ -112,6 +109,7 @@ namespace EnterpriseSystem.Entities
                 p.Name = name;
                 p.ProductType = productType;
                 p.SellingPrice = sellingPrice;
+                ProductsList.Sort(new ProductSorter());
             }
             else
             {
@@ -134,6 +132,7 @@ namespace EnterpriseSystem.Entities
             if (p != null)
             {
                 ProductsList.Remove(p);
+                ProductsList.Sort(new ProductSorter());
             }
             else
             {

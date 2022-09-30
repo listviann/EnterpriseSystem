@@ -19,7 +19,7 @@ namespace EnterpriseSystem.Entities
         [NonNegative]
         public decimal SellingPrice { get; set; }
 
-        public DateTime DateCreated { get; private set; }
+        public DateTime DateCreated { get; set; }
         #endregion
 
         #region Constructors

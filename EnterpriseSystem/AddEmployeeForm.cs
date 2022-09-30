@@ -148,10 +148,5 @@ namespace EnterpriseSystem
             _manager.CreateEmployee(EmployeeName_textBox.Text, EmployeeEmail_textBox.Text, EmployeePhoneNumber_textBox.Text, date, 
                 (Position)EmployeePosition_comboBox.SelectedItem, (EmployeeType)EmployeeType_comboBox.SelectedItem, salary);
         }
-
-        private void ShowMessage(string message)
-        {
-            MessageBox.Show(message);
-        }
     }
 }

@@ -20,7 +20,7 @@ namespace EnterpriseSystem.Serialization.Xml
 
         public void SerializeData(List<T> objects, string filename)
         {
-            using (FileStream fs = new FileStream(filename, FileMode.Open))
+            using (FileStream fs = new FileStream(filename, FileMode.OpenOrCreate))
             {
                 _formatter.Serialize(fs, objects);
             }

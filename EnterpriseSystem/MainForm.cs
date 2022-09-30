@@ -73,7 +73,7 @@ namespace EnterpriseSystem
                 return;
             }
 
-            string filename = jsonSave_saveFileDialog.FileName;
+            string filename = xmlSave_SaveFileDialog.FileName;
             SaveToXmlFile(filename);
         }
 
@@ -99,8 +99,6 @@ namespace EnterpriseSystem
                             obj.Position, EmployeeType.Hour, obj.Salary);
                         foreach (var prod in obj.ProductsList)
                         {
-                            //_manager.GetEmployeeById(obj.Id).Products.Add(prod);
-                            Debug.WriteLine(prod + "TEST");
                             _manager.GetEmployeeById(obj.Id).CreateProduct(prod.Name!, prod.ProductType!, prod.SellingPrice);
                         }
                     }
@@ -110,12 +108,9 @@ namespace EnterpriseSystem
                             obj.Position, EmployeeType.Fixed, obj.Salary);
                         foreach (var prod in obj.ProductsList)
                         {
-                            Debug.WriteLine(prod + " TEST PRODS");
                             _manager.GetEmployeeById(obj.Id).CreateProduct(prod.Name!, prod.ProductType!, prod.SellingPrice);
                         }
                     }
-                    //_manager.Employees.Add(obj);
-
                 }
             }
             catch (Exception ex)
@@ -128,6 +123,42 @@ namespace EnterpriseSystem
         {
             XmlManager<Employee> xmlManager = new XmlManager<Employee>();
             xmlManager.SerializeData(_manager.GetEmployees().ToList(), filename);
+        }
+
+        private void OpenXmlFile(string filename)
+        {
+            XmlManager<Employee> xmlManager = new XmlManager<Employee>();
+            List<Employee> objects = xmlManager.DeserializeData(filename);
+            _manager.Employees.Clear();
+
+            try
+            {
+                foreach (var obj in objects)
+                {
+                    if (obj is HourEmployee)
+                    {
+                        _manager.CreateEmployee(obj.Name!, obj.Email!, obj.PhoneNumber!, obj.BirthDate,
+                            obj.Position, EmployeeType.Hour, obj.Salary);
+                        foreach (var prod in obj.ProductsList)
+                        {
+                            _manager.GetEmployeeById(obj.Id).CreateProduct(prod.Name!, prod.ProductType!, prod.SellingPrice);
+                        }
+                    }
+                    else if (obj is FixedEmployee)
+                    {
+                        _manager.CreateEmployee(obj.Name!, obj.Email!, obj.PhoneNumber!, obj.BirthDate,
+                            obj.Position, EmployeeType.Fixed, obj.Salary);
+                        foreach (var prod in obj.ProductsList)
+                        {
+                            _manager.GetEmployeeById(obj.Id).CreateProduct(prod.Name!, prod.ProductType!, prod.SellingPrice);
+                        }
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
         }
 
         private void jsonFileToolStripMenuItem1_Click(object sender, EventArgs e)
@@ -143,7 +174,13 @@ namespace EnterpriseSystem
 
         private void xmlFileToolStripMenuItem1_Click(object sender, EventArgs e)
         {
+            if (xmlOpen_openFileDialog.ShowDialog() == DialogResult.Cancel)
+            {
+                return;
+            }
 
+            string filename = xmlOpen_openFileDialog.FileName;
+            OpenXmlFile(filename);
         }
     }
 }
