@@ -1,9 +1,13 @@
-﻿namespace EnterpriseSystem.Service
+﻿using System.Collections.Specialized;
+using System.Configuration;
+
+namespace EnterpriseSystem.Service
 {
     public class Config
     {
-        public const string FILEPATH = "loginfo.txt";
-        public const string EMPLOYEE_NOT_FOUND = "Employee not found";
-        public const string PRODUCT_NOT_FOUND = "Product not found";
+        private readonly static NameValueCollection appSettings = ConfigurationManager.AppSettings;
+        public readonly static string FILEPATH = appSettings["FileName"]!;
+        public readonly static string EMPLOYEE_NOT_FOUND = appSettings["EmployeeNotFoundException"]!;
+        public readonly static string PRODUCT_NOT_FOUND = appSettings["ProductNotFoundException"]!;
     }
 }
