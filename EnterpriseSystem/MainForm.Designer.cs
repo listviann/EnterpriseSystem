@@ -37,14 +37,14 @@
             this.saveAsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.jsonFileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.xmlFileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.openToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.jsonFileToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
+            this.xmlFileToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.aboutToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.jsonSave_saveFileDialog = new System.Windows.Forms.SaveFileDialog();
             this.xmlSave_SaveFileDialog = new System.Windows.Forms.SaveFileDialog();
             this.xmlOpen_openFileDialog = new System.Windows.Forms.OpenFileDialog();
             this.jsonOpen_openFileDialog = new System.Windows.Forms.OpenFileDialog();
-            this.openToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.jsonFileToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
-            this.xmlFileToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.MainFormMenu_menuStrip.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -128,22 +128,45 @@
             this.jsonFileToolStripMenuItem,
             this.xmlFileToolStripMenuItem});
             this.saveAsToolStripMenuItem.Name = "saveAsToolStripMenuItem";
-            this.saveAsToolStripMenuItem.Size = new System.Drawing.Size(224, 28);
+            this.saveAsToolStripMenuItem.Size = new System.Drawing.Size(150, 28);
             this.saveAsToolStripMenuItem.Text = "Save as";
             // 
             // jsonFileToolStripMenuItem
             // 
             this.jsonFileToolStripMenuItem.Name = "jsonFileToolStripMenuItem";
-            this.jsonFileToolStripMenuItem.Size = new System.Drawing.Size(224, 28);
+            this.jsonFileToolStripMenuItem.Size = new System.Drawing.Size(154, 28);
             this.jsonFileToolStripMenuItem.Text = "Json file";
             this.jsonFileToolStripMenuItem.Click += new System.EventHandler(this.jsonFileToolStripMenuItem_Click);
             // 
             // xmlFileToolStripMenuItem
             // 
             this.xmlFileToolStripMenuItem.Name = "xmlFileToolStripMenuItem";
-            this.xmlFileToolStripMenuItem.Size = new System.Drawing.Size(224, 28);
+            this.xmlFileToolStripMenuItem.Size = new System.Drawing.Size(154, 28);
             this.xmlFileToolStripMenuItem.Text = "Xml file";
             this.xmlFileToolStripMenuItem.Click += new System.EventHandler(this.xmlFileToolStripMenuItem_Click);
+            // 
+            // openToolStripMenuItem
+            // 
+            this.openToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.jsonFileToolStripMenuItem1,
+            this.xmlFileToolStripMenuItem1});
+            this.openToolStripMenuItem.Name = "openToolStripMenuItem";
+            this.openToolStripMenuItem.Size = new System.Drawing.Size(150, 28);
+            this.openToolStripMenuItem.Text = "Open";
+            // 
+            // jsonFileToolStripMenuItem1
+            // 
+            this.jsonFileToolStripMenuItem1.Name = "jsonFileToolStripMenuItem1";
+            this.jsonFileToolStripMenuItem1.Size = new System.Drawing.Size(154, 28);
+            this.jsonFileToolStripMenuItem1.Text = "Json file";
+            this.jsonFileToolStripMenuItem1.Click += new System.EventHandler(this.jsonFileToolStripMenuItem1_Click);
+            // 
+            // xmlFileToolStripMenuItem1
+            // 
+            this.xmlFileToolStripMenuItem1.Name = "xmlFileToolStripMenuItem1";
+            this.xmlFileToolStripMenuItem1.Size = new System.Drawing.Size(154, 28);
+            this.xmlFileToolStripMenuItem1.Text = "Xml file";
+            this.xmlFileToolStripMenuItem1.Click += new System.EventHandler(this.xmlFileToolStripMenuItem1_Click);
             // 
             // aboutToolStripMenuItem
             // 
@@ -152,6 +175,7 @@
             this.aboutToolStripMenuItem.Name = "aboutToolStripMenuItem";
             this.aboutToolStripMenuItem.Size = new System.Drawing.Size(71, 27);
             this.aboutToolStripMenuItem.Text = "About";
+            this.aboutToolStripMenuItem.Click += new System.EventHandler(this.aboutToolStripMenuItem_Click);
             // 
             // xmlOpen_openFileDialog
             // 
@@ -160,29 +184,6 @@
             // jsonOpen_openFileDialog
             // 
             this.jsonOpen_openFileDialog.FileName = "openFileDialog2";
-            // 
-            // openToolStripMenuItem
-            // 
-            this.openToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.jsonFileToolStripMenuItem1,
-            this.xmlFileToolStripMenuItem1});
-            this.openToolStripMenuItem.Name = "openToolStripMenuItem";
-            this.openToolStripMenuItem.Size = new System.Drawing.Size(224, 28);
-            this.openToolStripMenuItem.Text = "Open";
-            // 
-            // jsonFileToolStripMenuItem1
-            // 
-            this.jsonFileToolStripMenuItem1.Name = "jsonFileToolStripMenuItem1";
-            this.jsonFileToolStripMenuItem1.Size = new System.Drawing.Size(224, 28);
-            this.jsonFileToolStripMenuItem1.Text = "Json file";
-            this.jsonFileToolStripMenuItem1.Click += new System.EventHandler(this.jsonFileToolStripMenuItem1_Click);
-            // 
-            // xmlFileToolStripMenuItem1
-            // 
-            this.xmlFileToolStripMenuItem1.Name = "xmlFileToolStripMenuItem1";
-            this.xmlFileToolStripMenuItem1.Size = new System.Drawing.Size(224, 28);
-            this.xmlFileToolStripMenuItem1.Text = "Xml file";
-            this.xmlFileToolStripMenuItem1.Click += new System.EventHandler(this.xmlFileToolStripMenuItem1_Click);
             // 
             // MainForm
             // 

@@ -144,5 +144,11 @@ namespace EnterpriseSystem
             OpenXmlFile(filename);
             MessageBox.Show("Opened");
         }
+
+        private void aboutToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            AboutForm aboutForm = new();
+            aboutForm.Show();
+        }
     }
 }

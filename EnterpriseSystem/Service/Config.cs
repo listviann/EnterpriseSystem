@@ -9,5 +9,6 @@ namespace EnterpriseSystem.Service
         public readonly static string FILEPATH = appSettings["FileName"]!;
         public readonly static string EMPLOYEE_NOT_FOUND = appSettings["EmployeeNotFoundException"]!;
         public readonly static string PRODUCT_NOT_FOUND = appSettings["ProductNotFoundException"]!;
+        public readonly static string ABOUT_INFO = appSettings["AboutInfo"]!;
     }
 }
