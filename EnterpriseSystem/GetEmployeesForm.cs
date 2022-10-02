@@ -1,5 +1,6 @@
 ﻿using EnterpriseSystem.Entities;
 using EnterpriseSystem.Exceptions;
+using System.Windows;
 
 namespace EnterpriseSystem
 {
@@ -72,7 +73,7 @@ namespace EnterpriseSystem
                 throw new EmployeeNotFoundException();
             }
 
-            int empId = emp.Id;
+            Guid empId = emp.Id;
 
             UpdateEmployeeForm updateEmployeeForm = new(_manager, empId);
             updateEmployeeForm.Show();
@@ -87,10 +88,17 @@ namespace EnterpriseSystem
                 throw new EmployeeNotFoundException();
             }
 
-            int empId = emp.Id;
+            Guid empId = emp.Id;
             _manager.DeleteEmployee(empId);
             Employees_listBox.DataSource = null;
             Employees_listBox.DataSource = _manager.Employees;
+        }
+
+        private void Employees_listBox_DoubleClick(object sender, EventArgs e)
+        {
+            Employee? emp = (Employee)Employees_listBox.SelectedItem;
+            Clipboard.SetText(emp.Id.ToString());
+            MessageBox.Show("Id is copied to clipboard");
         }
     }
 }

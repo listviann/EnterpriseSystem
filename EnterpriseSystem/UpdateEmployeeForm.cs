@@ -5,9 +5,9 @@ namespace EnterpriseSystem
     public partial class UpdateEmployeeForm : Form
     {
         private readonly Manager _manager;
-        private readonly int _id;
+        private readonly Guid _id;
 
-        public UpdateEmployeeForm(Manager manager, int id)
+        public UpdateEmployeeForm(Manager manager, Guid id)
         {
             InitializeComponent();
 

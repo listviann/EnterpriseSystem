@@ -25,10 +25,10 @@ namespace EnterpriseSystem
 
         private void EmpId_textBox_KeyPress(object sender, KeyPressEventArgs e)
         {
-            if (!char.IsNumber(e.KeyChar))
-            {
-                e.Handled = true;
-            }
+            //if (!char.IsNumber(e.KeyChar))
+            //{
+            //    e.Handled = true;
+            //}
         }
 
         private void EmpSignIn_button_Click(object sender, EventArgs e)
@@ -38,7 +38,7 @@ namespace EnterpriseSystem
 
         private void SignIn()
         {
-            int id = Convert.ToInt32(EmpId_textBox.Text);
+            Guid id = new Guid(EmpId_textBox.Text);
 
             try
             {
@@ -52,6 +52,11 @@ namespace EnterpriseSystem
                 MessageBox.Show(ex.Message);
                 EmpId_textBox.Text = "1";
             }
+        }
+
+        private void EmpId_textBox_TextChanged(object sender, EventArgs e)
+        {
+
         }
     }
 }

@@ -3,6 +3,7 @@ using EnterpriseSystem.Logging;
 using EnterpriseSystem.Serialization.Json;
 using EnterpriseSystem.Serialization.Xml;
 using EnterpriseSystem.Service;
+using System.Diagnostics;
 
 namespace EnterpriseSystem
 {
@@ -63,6 +64,7 @@ namespace EnterpriseSystem
 
             string filename = jsonSave_saveFileDialog.FileName;
             SaveToJsonFile(filename);
+            MessageBox.Show("Saved");
         }
 
         private void xmlFileToolStripMenuItem_Click(object sender, EventArgs e)
@@ -74,6 +76,7 @@ namespace EnterpriseSystem
 
             string filename = xmlSave_SaveFileDialog.FileName;
             SaveToXmlFile(filename);
+            MessageBox.Show("Saved");
         }
 
         private void SaveToJsonFile(string filename)
@@ -127,6 +130,7 @@ namespace EnterpriseSystem
 
             string filename = jsonOpen_openFileDialog.FileName;
             OpenJsonFile(filename);
+            MessageBox.Show("Opened");
         }
 
         private void xmlFileToolStripMenuItem1_Click(object sender, EventArgs e)
@@ -138,6 +142,7 @@ namespace EnterpriseSystem
 
             string filename = xmlOpen_openFileDialog.FileName;
             OpenXmlFile(filename);
+            MessageBox.Show("Opened");
         }
     }
 }

@@ -54,6 +54,7 @@
             this.Products_listBox.Name = "Products_listBox";
             this.Products_listBox.Size = new System.Drawing.Size(458, 384);
             this.Products_listBox.TabIndex = 19;
+            this.Products_listBox.DoubleClick += new System.EventHandler(this.Products_listBox_DoubleClick);
             // 
             // DeleteProduct_button
             // 

@@ -1,4 +1,5 @@
 ﻿using System.ComponentModel.DataAnnotations;
+using System.Xml.Serialization;
 using EnterpriseSystem.Service;
 using Newtonsoft.Json;
 
@@ -8,7 +9,7 @@ namespace EnterpriseSystem.Entities
     public class Product
     {
         #region Properties
-        public int Id { get; set; }
+        public Guid Id { get; set; }
 
         [Required]
         public string? Name { get; set; }
@@ -24,7 +25,7 @@ namespace EnterpriseSystem.Entities
 
         #region Constructors
         public Product() { }
-        public Product(int id, string name, string productType, decimal sellingPrice)
+        public Product(Guid id, string name, string productType, decimal sellingPrice)
         {
             Id = id;
             Name = name;

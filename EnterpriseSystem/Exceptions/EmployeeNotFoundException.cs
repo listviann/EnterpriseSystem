@@ -2,7 +2,7 @@
 {
     public class EmployeeNotFoundException : Exception
     {
-        public int EmployeeId { get; set; }
+        public Guid EmployeeId { get; set; }
 
         public EmployeeNotFoundException() { }
 
@@ -12,7 +12,7 @@
         public EmployeeNotFoundException(string message, Exception inner)
             : base(message, inner) { }
 
-        public EmployeeNotFoundException(string message, int employeeId)
+        public EmployeeNotFoundException(string message, Guid employeeId)
             : this(message)
         {
             EmployeeId = employeeId;

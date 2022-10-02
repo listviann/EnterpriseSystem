@@ -48,7 +48,7 @@ namespace EnterpriseSystem
                 throw new ProductNotFoundException();
             }
 
-            int prodId = product.Id;
+            Guid prodId = product.Id;
             UpdateProductForm updateProductForm = new(_employee, prodId);
             updateProductForm.Show();
         }
@@ -62,11 +62,18 @@ namespace EnterpriseSystem
                 throw new ProductNotFoundException();
             }
 
-            int prodId = product.Id;
+            Guid prodId = product.Id;
             _employee.DeleteProduct(prodId);
 
             Products_listBox.DataSource = null;
             Products_listBox.DataSource = _employee.ProductsList;
+        }
+
+        private void Products_listBox_DoubleClick(object sender, EventArgs e)
+        {
+            Product? product = (Product)Products_listBox.SelectedItem;
+            Clipboard.SetText(product.Id.ToString());
+            MessageBox.Show("Id is copied to clipboard");
         }
     }
 }

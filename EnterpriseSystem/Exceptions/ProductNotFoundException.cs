@@ -3,7 +3,7 @@
     [Serializable]
     public class ProductNotFoundException : Exception
     {
-        public int ProductId { get; set; }
+        public Guid ProductId { get; set; }
 
         public ProductNotFoundException()
         { }
@@ -14,7 +14,7 @@
         public ProductNotFoundException(string message, Exception inner)
             : base(message, inner) { }
 
-        public ProductNotFoundException(string message, int productId)
+        public ProductNotFoundException(string message, Guid productId)
             : this(message)
         {
             ProductId = productId;

@@ -29,7 +29,7 @@ namespace EnterpriseSystem.Entities
         protected Position _position;
 
         #region Properties
-        public int Id { get; set; }
+        public Guid Id { get; set; }
 
         [Required]
         [StringLength(100, MinimumLength = 2)]
@@ -66,7 +66,7 @@ namespace EnterpriseSystem.Entities
 
         #region Constructors
         protected Employee() { }
-        protected Employee(int id, string name, string email, string phoneNumber,
+        protected Employee(Guid id, string name, string email, string phoneNumber,
             decimal salary, DateTime birthDate, Position position)
         {
             Id = id;
@@ -82,7 +82,7 @@ namespace EnterpriseSystem.Entities
         #region CRUD operations
         public virtual void CreateProduct(string name, string productType, decimal sellingPrice)
         {
-            int productId = ProductsList.Count + 1;
+            Guid productId = Guid.NewGuid();
             Product product = new(productId, name, productType, sellingPrice);
 
             if (IsValidObject(product))
@@ -92,7 +92,7 @@ namespace EnterpriseSystem.Entities
             }
         }
 
-        public virtual void UpdateProduct(int id, string name, string productType, decimal sellingPrice)
+        public virtual void UpdateProduct(Guid id, string name, string productType, decimal sellingPrice)
         {
             if (!IsValidInput(name, "Name")
                 || !IsValidInput(productType, "ProductType")
@@ -124,7 +124,7 @@ namespace EnterpriseSystem.Entities
             }
         }
 
-        public virtual void DeleteProduct(int id)
+        public virtual void DeleteProduct(Guid id)
         {
             Product? p = ProductsList.FirstOrDefault(p => p.Id == id);
             if (p != null)

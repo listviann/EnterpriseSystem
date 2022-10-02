@@ -9,7 +9,7 @@ namespace EnterpriseSystem.Entities
 
         #region Constructors
         public HourEmployee() { }
-        public HourEmployee(int id, string name, string email, string phoneNumber, 
+        public HourEmployee(Guid id, string name, string email, string phoneNumber, 
             decimal salary, DateTime birthDate, Position position)
             : base(id, name, email, phoneNumber, salary, birthDate, position)
         { }
@@ -28,13 +28,13 @@ namespace EnterpriseSystem.Entities
             base.GetProducts();
         }
 
-        public override void UpdateProduct(int id, string name, string productType, decimal sellingPrice)
+        public override void UpdateProduct(Guid id, string name, string productType, decimal sellingPrice)
         {
             LoggerViewModel.Logger.Log($"Hour salary employee [{Id} - {Name}] updated the product with id: {id}", Config.FILEPATH);
             base.UpdateProduct(id, name, productType, sellingPrice);
         }
 
-        public override void DeleteProduct(int id)
+        public override void DeleteProduct(Guid id)
         {
             LoggerViewModel.Logger.Log($"Hour salary employee [{Id} - {Name}] deleted the product with id: {id}", Config.FILEPATH);
             base.DeleteProduct(id);

@@ -25,7 +25,7 @@ namespace EnterpriseSystem
         public void CreateEmployee(string name, string email, string phoneNumber, DateTime birthDate,
             Position position, EmployeeType empType, decimal salary)
         {
-            int id = Employees.Count + 1;
+            Guid id = Guid.NewGuid();
             Employee? emp = null;
 
             switch (empType)
@@ -47,7 +47,7 @@ namespace EnterpriseSystem
             }
         }
 
-        public void UpdateEmployee(int id, string name, string email, string phoneNumber,
+        public void UpdateEmployee(Guid id, string name, string email, string phoneNumber,
             DateTime birthDate, Position position, decimal salary)
         {
             if (!IsValidInput(name, "Name")
@@ -79,7 +79,7 @@ namespace EnterpriseSystem
             }
         }
 
-        public Employee GetEmployeeById(int id)
+        public Employee GetEmployeeById(Guid id)
         {
             Employee? emp = Employees.FirstOrDefault(e => e.Id == id);
             if (emp != null)
@@ -145,7 +145,7 @@ namespace EnterpriseSystem
             return _fixedEmployees;
         }
 
-        public void DeleteEmployee(int id)
+        public void DeleteEmployee(Guid id)
         {
             Employee? emp = Employees?.FirstOrDefault(e => e.Id == id);
             if (emp != null)
