@@ -34,8 +34,9 @@
             this.GetEmployees_label = new System.Windows.Forms.Label();
             this.searchKey_comboBox = new System.Windows.Forms.ComboBox();
             this.searchEmp_TextBox = new System.Windows.Forms.TextBox();
-            this.searchEmps_Button = new System.Windows.Forms.Button();
+            this.SearchEmployees_Button = new System.Windows.Forms.Button();
             this.employeeTypes_comboBox = new System.Windows.Forms.ComboBox();
+            this.SortEmployees_button = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // EditEmployee_button
@@ -45,7 +46,7 @@
             this.EditEmployee_button.ForeColor = System.Drawing.Color.White;
             this.EditEmployee_button.Location = new System.Drawing.Point(12, 471);
             this.EditEmployee_button.Name = "EditEmployee_button";
-            this.EditEmployee_button.Size = new System.Drawing.Size(216, 65);
+            this.EditEmployee_button.Size = new System.Drawing.Size(260, 65);
             this.EditEmployee_button.TabIndex = 13;
             this.EditEmployee_button.Text = "Edit";
             this.EditEmployee_button.UseVisualStyleBackColor = false;
@@ -56,9 +57,9 @@
             this.DeleteEmployee_button.BackColor = System.Drawing.Color.DarkRed;
             this.DeleteEmployee_button.Font = new System.Drawing.Font("Segoe UI", 19.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.DeleteEmployee_button.ForeColor = System.Drawing.Color.White;
-            this.DeleteEmployee_button.Location = new System.Drawing.Point(254, 471);
+            this.DeleteEmployee_button.Location = new System.Drawing.Point(327, 471);
             this.DeleteEmployee_button.Name = "DeleteEmployee_button";
-            this.DeleteEmployee_button.Size = new System.Drawing.Size(216, 65);
+            this.DeleteEmployee_button.Size = new System.Drawing.Size(263, 65);
             this.DeleteEmployee_button.TabIndex = 14;
             this.DeleteEmployee_button.Text = "Delete";
             this.DeleteEmployee_button.UseVisualStyleBackColor = false;
@@ -71,7 +72,7 @@
             this.Employees_listBox.ItemHeight = 20;
             this.Employees_listBox.Location = new System.Drawing.Point(12, 121);
             this.Employees_listBox.Name = "Employees_listBox";
-            this.Employees_listBox.Size = new System.Drawing.Size(458, 344);
+            this.Employees_listBox.Size = new System.Drawing.Size(581, 344);
             this.Employees_listBox.TabIndex = 15;
             this.Employees_listBox.SelectedIndexChanged += new System.EventHandler(this.Employees_listBox_SelectedIndexChanged);
             this.Employees_listBox.DoubleClick += new System.EventHandler(this.Employees_listBox_DoubleClick);
@@ -102,14 +103,14 @@
             this.searchEmp_TextBox.Size = new System.Drawing.Size(170, 27);
             this.searchEmp_TextBox.TabIndex = 18;
             // 
-            // searchEmps_Button
+            // SearchEmployees_Button
             // 
-            this.searchEmps_Button.Location = new System.Drawing.Point(353, 88);
-            this.searchEmps_Button.Name = "searchEmps_Button";
-            this.searchEmps_Button.Size = new System.Drawing.Size(117, 27);
-            this.searchEmps_Button.TabIndex = 19;
-            this.searchEmps_Button.Text = "button1";
-            this.searchEmps_Button.UseVisualStyleBackColor = true;
+            this.SearchEmployees_Button.Location = new System.Drawing.Point(353, 88);
+            this.SearchEmployees_Button.Name = "SearchEmployees_Button";
+            this.SearchEmployees_Button.Size = new System.Drawing.Size(117, 27);
+            this.SearchEmployees_Button.TabIndex = 19;
+            this.SearchEmployees_Button.Text = "Search";
+            this.SearchEmployees_Button.UseVisualStyleBackColor = true;
             // 
             // employeeTypes_comboBox
             // 
@@ -120,14 +121,25 @@
             this.employeeTypes_comboBox.TabIndex = 20;
             this.employeeTypes_comboBox.SelectedIndexChanged += new System.EventHandler(this.employeeTypes_comboBox_SelectedIndexChanged);
             // 
+            // SortEmployees_button
+            // 
+            this.SortEmployees_button.Location = new System.Drawing.Point(476, 88);
+            this.SortEmployees_button.Name = "SortEmployees_button";
+            this.SortEmployees_button.Size = new System.Drawing.Size(117, 27);
+            this.SortEmployees_button.TabIndex = 21;
+            this.SortEmployees_button.Text = "Sort";
+            this.SortEmployees_button.UseVisualStyleBackColor = true;
+            this.SortEmployees_button.Click += new System.EventHandler(this.SortEmployees_button_Click);
+            // 
             // GetEmployeesForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.Black;
-            this.ClientSize = new System.Drawing.Size(482, 548);
+            this.ClientSize = new System.Drawing.Size(602, 548);
+            this.Controls.Add(this.SortEmployees_button);
             this.Controls.Add(this.employeeTypes_comboBox);
-            this.Controls.Add(this.searchEmps_Button);
+            this.Controls.Add(this.SearchEmployees_Button);
             this.Controls.Add(this.searchEmp_TextBox);
             this.Controls.Add(this.searchKey_comboBox);
             this.Controls.Add(this.GetEmployees_label);
@@ -135,7 +147,6 @@
             this.Controls.Add(this.DeleteEmployee_button);
             this.Controls.Add(this.EditEmployee_button);
             this.MaximizeBox = false;
-            this.MaximumSize = new System.Drawing.Size(500, 595);
             this.MinimumSize = new System.Drawing.Size(500, 595);
             this.Name = "GetEmployeesForm";
             this.Text = "GetEmployeesForm";
@@ -153,7 +164,8 @@
         private Label GetEmployees_label;
         private ComboBox searchKey_comboBox;
         private TextBox searchEmp_TextBox;
-        private Button searchEmps_Button;
+        private Button SearchEmployees_Button;
         private ComboBox employeeTypes_comboBox;
+        private Button SortEmployees_button;
     }
 }

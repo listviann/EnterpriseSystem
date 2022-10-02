@@ -14,7 +14,7 @@ namespace EnterpriseSystem
 
     public class Manager : IValidationHelper<Employee>
     {
-        public event Action<string> ModelNotify;
+        public event Action<string>? ModelNotify;
 
         public List<Employee> Employees { get; set; } = new List<Employee>();
 
@@ -41,7 +41,7 @@ namespace EnterpriseSystem
             if (IsValidObject(emp!))
             {
                 Employees.Add(emp!);
-                SortAllEmployees();
+                //SortAllEmployees();
                 Debug.WriteLine(Employees.Count);
                 LoggerViewModel.Logger.Log($"Manager added a new employee with id: {emp!.Id}", Config.FILEPATH);
             }
@@ -69,7 +69,7 @@ namespace EnterpriseSystem
                 emp.Position = position;
                 emp.Salary = salary;
 
-                SortAllEmployees();
+                //SortAllEmployees();
 
                 LoggerViewModel.Logger.Log($"Employee with id: {emp.Id} has been edited", Config.FILEPATH);
             }
@@ -151,7 +151,7 @@ namespace EnterpriseSystem
             if (emp != null)
             {
                 Employees?.Remove(emp);
-                SortAllEmployees();
+                //SortAllEmployees();
 
                 LoggerViewModel.Logger.Log($"Employee with id: {emp.Id} has been deleted", Config.FILEPATH);
             }
@@ -162,10 +162,24 @@ namespace EnterpriseSystem
         }
         #endregion
 
-        private void SortAllEmployees()
+        //public void SortFinally()
+        //{
+        //    var outer = Task.Factory.StartNew(async () =>
+        //    {
+        //        await SortAllEmployees();
+        //    });
+        //}
+
+        public async Task SortAllEmployees()
         {
-            Employees.Sort(new EmployeeSorter());
+            var outer = await Task.Factory.StartNew(async () =>
+            {
+                LoggerViewModel.Logger.Log($"Sorting is started at: {DateTime.Now}", Config.FILEPATH);
+                await Task.Run(() => Employees.Sort(new EmployeeSorter()));
+                LoggerViewModel.Logger.Log($"Sorting is ended at: {DateTime.Now}\nSorted elements number: {Employees.Count}", Config.FILEPATH);
+            });
         }
+
 
         #region Validation
         public bool IsValidObject(Employee entity)
@@ -205,8 +219,8 @@ namespace EnterpriseSystem
         {
             foreach (var error in results)
             {
-                ShowModelMessage(error.ErrorMessage);
-                LoggerViewModel.Logger.Log(error.ErrorMessage, Config.FILEPATH);
+                ShowModelMessage(error.ErrorMessage!);
+                LoggerViewModel.Logger.Log(error.ErrorMessage!, Config.FILEPATH);
                 //Console.WriteLine(error.ErrorMessage);
             }
         }
@@ -214,7 +228,7 @@ namespace EnterpriseSystem
 
         private void ShowModelMessage(string message)
         {
-            ModelNotify.Invoke(message);
+            ModelNotify!.Invoke(message);
         }
     }
 }

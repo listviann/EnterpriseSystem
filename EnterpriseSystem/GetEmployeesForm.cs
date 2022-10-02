@@ -1,5 +1,6 @@
 ﻿using EnterpriseSystem.Entities;
 using EnterpriseSystem.Exceptions;
+using System.Runtime.InteropServices;
 using System.Windows;
 
 namespace EnterpriseSystem
@@ -99,6 +100,19 @@ namespace EnterpriseSystem
             Employee? emp = (Employee)Employees_listBox.SelectedItem;
             Clipboard.SetText(emp.Id.ToString());
             MessageBox.Show("Id is copied to clipboard");
+        }
+
+        private void SortEmployees_button_Click(object sender, EventArgs e)
+        {
+            //await SortAsync();
+            Sort();
+            Employees_listBox.DataSource = null;
+            Employees_listBox.DataSource = _manager.Employees;
+        }
+
+        private async void Sort()
+        {
+            await _manager.SortAllEmployees();
         }
     }
 }
