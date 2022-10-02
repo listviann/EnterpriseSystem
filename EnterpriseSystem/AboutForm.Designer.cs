@@ -64,7 +64,7 @@
             this.MaximumSize = new System.Drawing.Size(620, 595);
             this.MinimumSize = new System.Drawing.Size(620, 595);
             this.Name = "AboutForm";
-            this.Text = "AboutForm";
+            this.Text = "About";
             this.Load += new System.EventHandler(this.AboutForm_Load);
             this.ResumeLayout(false);
             this.PerformLayout();

@@ -127,7 +127,7 @@
             this.MaximumSize = new System.Drawing.Size(500, 595);
             this.MinimumSize = new System.Drawing.Size(500, 595);
             this.Name = "GetProductsForm";
-            this.Text = "GetProductsForm";
+            this.Text = "Products";
             this.Load += new System.EventHandler(this.GetProductsForm_Load);
             this.ResumeLayout(false);
             this.PerformLayout();

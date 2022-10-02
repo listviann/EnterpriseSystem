@@ -150,7 +150,7 @@
             this.MaximizeBox = false;
             this.MinimumSize = new System.Drawing.Size(500, 595);
             this.Name = "GetEmployeesForm";
-            this.Text = "GetEmployeesForm";
+            this.Text = "Employees";
             this.Load += new System.EventHandler(this.GetEmployeesForm_Load);
             this.ResumeLayout(false);
             this.PerformLayout();

@@ -112,7 +112,7 @@
             this.Controls.Add(this.ProductName_textBox);
             this.MaximizeBox = false;
             this.Name = "AddProductForm";
-            this.Text = "AddProductForm";
+            this.Text = "Add product";
             this.Load += new System.EventHandler(this.AddProductForm_Load);
             this.ResumeLayout(false);
             this.PerformLayout();

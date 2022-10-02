@@ -83,7 +83,7 @@
             this.MaximumSize = new System.Drawing.Size(500, 400);
             this.MinimumSize = new System.Drawing.Size(500, 400);
             this.Name = "ManagerForm";
-            this.Text = "ManagerForm";
+            this.Text = "Manager";
             this.Load += new System.EventHandler(this.ManagerForm_Load);
             this.ResumeLayout(false);
             this.PerformLayout();

@@ -78,7 +78,7 @@
             this.MinimizeBox = false;
             this.MinimumSize = new System.Drawing.Size(330, 174);
             this.Name = "EmpLoginForm";
-            this.Text = "EmpLoginForm";
+            this.Text = "Sign in";
             this.Load += new System.EventHandler(this.EmpLoginForm_Load);
             this.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.EmpId_textBox_KeyPress);
             this.ResumeLayout(false);

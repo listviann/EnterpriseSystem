@@ -235,7 +235,7 @@
             this.MaximumSize = new System.Drawing.Size(500, 595);
             this.MinimumSize = new System.Drawing.Size(500, 595);
             this.Name = "AddEmployeeForm";
-            this.Text = "AddEmployeeForm";
+            this.Text = "Add Employee";
             this.Load += new System.EventHandler(this.AddEmployeeForm_Load);
             this.DateFields_panel.ResumeLayout(false);
             this.DateFields_panel.PerformLayout();

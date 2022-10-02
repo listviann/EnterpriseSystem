@@ -114,7 +114,7 @@
             this.MaximumSize = new System.Drawing.Size(500, 410);
             this.MinimumSize = new System.Drawing.Size(500, 410);
             this.Name = "UpdateProductForm";
-            this.Text = "UpdateProductForm";
+            this.Text = "Edit product";
             this.Load += new System.EventHandler(this.UpdateProductForm_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
