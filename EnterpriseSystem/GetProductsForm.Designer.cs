@@ -32,6 +32,9 @@
             this.Products_listBox = new System.Windows.Forms.ListBox();
             this.DeleteProduct_button = new System.Windows.Forms.Button();
             this.EditProduct_button = new System.Windows.Forms.Button();
+            this.SearchProduct_TextBox = new System.Windows.Forms.TextBox();
+            this.SearchProduct_Button = new System.Windows.Forms.Button();
+            this.SearchKey_comboBox = new System.Windows.Forms.ComboBox();
             this.SuspendLayout();
             // 
             // GetProducts_label
@@ -50,9 +53,9 @@
             this.Products_listBox.FormattingEnabled = true;
             this.Products_listBox.HorizontalScrollbar = true;
             this.Products_listBox.ItemHeight = 20;
-            this.Products_listBox.Location = new System.Drawing.Point(12, 81);
+            this.Products_listBox.Location = new System.Drawing.Point(12, 121);
             this.Products_listBox.Name = "Products_listBox";
-            this.Products_listBox.Size = new System.Drawing.Size(458, 384);
+            this.Products_listBox.Size = new System.Drawing.Size(458, 344);
             this.Products_listBox.TabIndex = 19;
             this.Products_listBox.DoubleClick += new System.EventHandler(this.Products_listBox_DoubleClick);
             // 
@@ -82,12 +85,40 @@
             this.EditProduct_button.UseVisualStyleBackColor = false;
             this.EditProduct_button.Click += new System.EventHandler(this.EditProduct_button_Click);
             // 
+            // SearchProduct_TextBox
+            // 
+            this.SearchProduct_TextBox.Location = new System.Drawing.Point(131, 88);
+            this.SearchProduct_TextBox.Name = "SearchProduct_TextBox";
+            this.SearchProduct_TextBox.Size = new System.Drawing.Size(216, 27);
+            this.SearchProduct_TextBox.TabIndex = 21;
+            // 
+            // SearchProduct_Button
+            // 
+            this.SearchProduct_Button.Location = new System.Drawing.Point(353, 88);
+            this.SearchProduct_Button.Name = "SearchProduct_Button";
+            this.SearchProduct_Button.Size = new System.Drawing.Size(117, 27);
+            this.SearchProduct_Button.TabIndex = 22;
+            this.SearchProduct_Button.Text = "Search";
+            this.SearchProduct_Button.UseVisualStyleBackColor = true;
+            this.SearchProduct_Button.Click += new System.EventHandler(this.SearchProduct_Button_Click);
+            // 
+            // SearchKey_comboBox
+            // 
+            this.SearchKey_comboBox.FormattingEnabled = true;
+            this.SearchKey_comboBox.Location = new System.Drawing.Point(12, 87);
+            this.SearchKey_comboBox.Name = "SearchKey_comboBox";
+            this.SearchKey_comboBox.Size = new System.Drawing.Size(113, 28);
+            this.SearchKey_comboBox.TabIndex = 23;
+            // 
             // GetProductsForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.Black;
             this.ClientSize = new System.Drawing.Size(482, 548);
+            this.Controls.Add(this.SearchKey_comboBox);
+            this.Controls.Add(this.SearchProduct_Button);
+            this.Controls.Add(this.SearchProduct_TextBox);
             this.Controls.Add(this.GetProducts_label);
             this.Controls.Add(this.Products_listBox);
             this.Controls.Add(this.DeleteProduct_button);
@@ -109,5 +140,8 @@
         private ListBox Products_listBox;
         private Button DeleteProduct_button;
         private Button EditProduct_button;
+        private TextBox SearchProduct_TextBox;
+        private Button SearchProduct_Button;
+        private ComboBox SearchKey_comboBox;
     }
 }

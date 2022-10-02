@@ -32,8 +32,8 @@
             this.DeleteEmployee_button = new System.Windows.Forms.Button();
             this.Employees_listBox = new System.Windows.Forms.ListBox();
             this.GetEmployees_label = new System.Windows.Forms.Label();
-            this.searchKey_comboBox = new System.Windows.Forms.ComboBox();
-            this.searchEmp_TextBox = new System.Windows.Forms.TextBox();
+            this.SearchKey_comboBox = new System.Windows.Forms.ComboBox();
+            this.SearchEmployee_TextBox = new System.Windows.Forms.TextBox();
             this.SearchEmployees_Button = new System.Windows.Forms.Button();
             this.employeeTypes_comboBox = new System.Windows.Forms.ComboBox();
             this.SortEmployees_button = new System.Windows.Forms.Button();
@@ -88,20 +88,20 @@
             this.GetEmployees_label.TabIndex = 16;
             this.GetEmployees_label.Text = "Get employees";
             // 
-            // searchKey_comboBox
+            // SearchKey_comboBox
             // 
-            this.searchKey_comboBox.FormattingEnabled = true;
-            this.searchKey_comboBox.Location = new System.Drawing.Point(81, 88);
-            this.searchKey_comboBox.Name = "searchKey_comboBox";
-            this.searchKey_comboBox.Size = new System.Drawing.Size(90, 28);
-            this.searchKey_comboBox.TabIndex = 17;
+            this.SearchKey_comboBox.FormattingEnabled = true;
+            this.SearchKey_comboBox.Location = new System.Drawing.Point(81, 88);
+            this.SearchKey_comboBox.Name = "SearchKey_comboBox";
+            this.SearchKey_comboBox.Size = new System.Drawing.Size(90, 28);
+            this.SearchKey_comboBox.TabIndex = 17;
             // 
-            // searchEmp_TextBox
+            // SearchEmployee_TextBox
             // 
-            this.searchEmp_TextBox.Location = new System.Drawing.Point(177, 89);
-            this.searchEmp_TextBox.Name = "searchEmp_TextBox";
-            this.searchEmp_TextBox.Size = new System.Drawing.Size(170, 27);
-            this.searchEmp_TextBox.TabIndex = 18;
+            this.SearchEmployee_TextBox.Location = new System.Drawing.Point(177, 89);
+            this.SearchEmployee_TextBox.Name = "SearchEmployee_TextBox";
+            this.SearchEmployee_TextBox.Size = new System.Drawing.Size(170, 27);
+            this.SearchEmployee_TextBox.TabIndex = 18;
             // 
             // SearchEmployees_Button
             // 
@@ -111,6 +111,7 @@
             this.SearchEmployees_Button.TabIndex = 19;
             this.SearchEmployees_Button.Text = "Search";
             this.SearchEmployees_Button.UseVisualStyleBackColor = true;
+            this.SearchEmployees_Button.Click += new System.EventHandler(this.SearchEmployees_Button_Click);
             // 
             // employeeTypes_comboBox
             // 
@@ -140,8 +141,8 @@
             this.Controls.Add(this.SortEmployees_button);
             this.Controls.Add(this.employeeTypes_comboBox);
             this.Controls.Add(this.SearchEmployees_Button);
-            this.Controls.Add(this.searchEmp_TextBox);
-            this.Controls.Add(this.searchKey_comboBox);
+            this.Controls.Add(this.SearchEmployee_TextBox);
+            this.Controls.Add(this.SearchKey_comboBox);
             this.Controls.Add(this.GetEmployees_label);
             this.Controls.Add(this.Employees_listBox);
             this.Controls.Add(this.DeleteEmployee_button);
@@ -162,8 +163,8 @@
         private Button DeleteEmployee_button;
         private ListBox Employees_listBox;
         private Label GetEmployees_label;
-        private ComboBox searchKey_comboBox;
-        private TextBox searchEmp_TextBox;
+        private ComboBox SearchKey_comboBox;
+        private TextBox SearchEmployee_TextBox;
         private Button SearchEmployees_Button;
         private ComboBox employeeTypes_comboBox;
         private Button SortEmployees_button;

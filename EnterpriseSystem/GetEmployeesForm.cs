@@ -7,8 +7,17 @@ namespace EnterpriseSystem
 {
     public partial class GetEmployeesForm : Form
     {
+        private enum EmployeeSearchType
+        {
+            All, Hour, Fixed
+        }
+
+        private enum SearchKey
+        {
+            All, Name, Salary, Email, PhoneNumber
+        }
+
         private readonly Manager _manager;
-        private readonly string[] _empTypes = { "All", "Hour", "Fixed" };
 
         public GetEmployeesForm(Manager manager)
         {
@@ -17,7 +26,8 @@ namespace EnterpriseSystem
             _manager = manager;
 
             Employees_listBox.DataSource = _manager.Employees;
-            employeeTypes_comboBox.DataSource = _empTypes;
+            employeeTypes_comboBox.DataSource = Enum.GetValues(typeof(EmployeeSearchType));
+            SearchKey_comboBox.DataSource = Enum.GetValues(typeof(SearchKey));
 
             GetEmployees_label.Left = (this.ClientSize.Width - GetEmployees_label.Width) / 2;
         }
@@ -48,20 +58,20 @@ namespace EnterpriseSystem
 
         private void employeeTypes_comboBox_SelectedIndexChanged(object sender, EventArgs e)
         {
-            if ((string)employeeTypes_comboBox.SelectedItem == _empTypes[0])
-            {
-                Employees_listBox.DataSource = null;
-                Employees_listBox.DataSource = _manager.Employees;
-            }
-            else if ((string)employeeTypes_comboBox.SelectedItem == _empTypes[1])
+            if ((EmployeeSearchType)employeeTypes_comboBox.SelectedItem == EmployeeSearchType.Hour)
             {
                 Employees_listBox.DataSource = null;
                 Employees_listBox.DataSource = _manager.GetHourEmployees();
             }
-            else if ((string)employeeTypes_comboBox.SelectedItem == _empTypes[2])
+            else if ((EmployeeSearchType)employeeTypes_comboBox.SelectedItem == EmployeeSearchType.Fixed)
             {
                 Employees_listBox.DataSource = null;
                 Employees_listBox.DataSource = _manager.GetFixedEmployees();
+            }
+            else
+            {
+                Employees_listBox.DataSource = null;
+                Employees_listBox.DataSource = _manager.Employees;
             }
         }
 
@@ -113,6 +123,40 @@ namespace EnterpriseSystem
         private async void Sort()
         {
             await _manager.SortAllEmployees();
+        }
+
+        private void SearchEmployees_Button_Click(object sender, EventArgs e)
+        {
+            switch ((SearchKey)SearchKey_comboBox.SelectedItem)
+            {
+                case SearchKey.Name:
+                    Employees_listBox.DataSource = null;
+                    Employees_listBox.DataSource = _manager.Employees.Where(e => e.Name == SearchEmployee_TextBox.Text).ToList();
+                    break;
+                case SearchKey.Salary:
+                    try
+                    {
+                        Employees_listBox.DataSource = null;
+                        Employees_listBox.DataSource = _manager.Employees.Where(e => e.Salary == Convert.ToDecimal(SearchEmployee_TextBox.Text)).ToList();
+                    }
+                    catch (FormatException ex)
+                    {
+                        MessageBox.Show(ex.Message);
+                    }
+                    break;
+                case SearchKey.Email:
+                    Employees_listBox.DataSource = null;
+                    Employees_listBox.DataSource = _manager.Employees.Where(e => e.Email == SearchEmployee_TextBox.Text).ToList();
+                    break;
+                case SearchKey.PhoneNumber:
+                    Employees_listBox.DataSource = null;
+                    Employees_listBox.DataSource = _manager.Employees.Where(e => e.PhoneNumber == SearchEmployee_TextBox.Text).ToList();
+                    break;
+                default:
+                    Employees_listBox.DataSource = null;
+                    Employees_listBox.DataSource = _manager.Employees;
+                    break;
+            }
         }
     }
 }

@@ -6,7 +6,12 @@ namespace EnterpriseSystem
     public partial class GetProductsForm : Form
     {   
         private readonly Employee _employee;
-        
+
+        private enum SearchKey
+        {
+           All, Name, Type, Price
+        }
+
         public GetProductsForm(Employee employee)
         {
             InitializeComponent();
@@ -21,6 +26,7 @@ namespace EnterpriseSystem
                 DeleteProduct_button.Enabled = false;
             }
 
+            SearchKey_comboBox.DataSource = Enum.GetValues(typeof(SearchKey));
             GetProducts_label.Left = (this.ClientSize.Width - GetProducts_label.Width) / 2;
         }
 
@@ -74,6 +80,36 @@ namespace EnterpriseSystem
             Product? product = (Product)Products_listBox.SelectedItem;
             Clipboard.SetText(product.Id.ToString());
             MessageBox.Show("Id is copied to clipboard");
+        }
+
+        private void SearchProduct_Button_Click(object sender, EventArgs e)
+        {
+            switch ((SearchKey)SearchKey_comboBox.SelectedItem)
+            {
+                case SearchKey.Name:
+                    Products_listBox.DataSource = null;
+                    Products_listBox.DataSource = _employee.ProductsList.Where(p => p.Name == SearchProduct_TextBox.Text).ToList();
+                    break;
+                case SearchKey.Type:
+                    Products_listBox.DataSource = null;
+                    Products_listBox.DataSource = _employee.ProductsList.Where(p => p.ProductType == SearchProduct_TextBox.Text).ToList();
+                    break;
+                case SearchKey.Price:
+                    try
+                    {
+                        Products_listBox.DataSource = null;
+                        Products_listBox.DataSource = _employee.ProductsList.Where(p => p.SellingPrice == Convert.ToDecimal(SearchProduct_TextBox.Text)).ToList();
+                    }
+                    catch (FormatException ex)
+                    {
+                        MessageBox.Show(ex.Message);
+                    }
+                    break;
+                default:
+                    Products_listBox.DataSource = null;
+                    Products_listBox.DataSource = _employee.ProductsList;
+                    break;
+            }
         }
     }
 }
