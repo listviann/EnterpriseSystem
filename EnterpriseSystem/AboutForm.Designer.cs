@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(AboutForm));
             this.AboutInfo_label = new System.Windows.Forms.Label();
             this.Info_richTextBox = new System.Windows.Forms.RichTextBox();
             this.SuspendLayout();
@@ -60,6 +61,7 @@
             this.ClientSize = new System.Drawing.Size(602, 548);
             this.Controls.Add(this.Info_richTextBox);
             this.Controls.Add(this.AboutInfo_label);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximizeBox = false;
             this.MaximumSize = new System.Drawing.Size(620, 595);
             this.MinimumSize = new System.Drawing.Size(620, 595);

@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(AddEmployeeForm));
             this.EmployeeName_textBox = new System.Windows.Forms.TextBox();
             this.AddEmployee_label = new System.Windows.Forms.Label();
             this.EmployeeEmail_textBox = new System.Windows.Forms.TextBox();
@@ -231,6 +232,7 @@
             this.Controls.Add(this.EmployeeEmail_textBox);
             this.Controls.Add(this.AddEmployee_label);
             this.Controls.Add(this.EmployeeName_textBox);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximizeBox = false;
             this.MaximumSize = new System.Drawing.Size(500, 595);
             this.MinimumSize = new System.Drawing.Size(500, 595);

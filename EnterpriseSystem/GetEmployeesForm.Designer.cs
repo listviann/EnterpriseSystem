@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(GetEmployeesForm));
             this.EditEmployee_button = new System.Windows.Forms.Button();
             this.DeleteEmployee_button = new System.Windows.Forms.Button();
             this.Employees_listBox = new System.Windows.Forms.ListBox();
@@ -147,6 +148,7 @@
             this.Controls.Add(this.Employees_listBox);
             this.Controls.Add(this.DeleteEmployee_button);
             this.Controls.Add(this.EditEmployee_button);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximizeBox = false;
             this.MinimumSize = new System.Drawing.Size(500, 595);
             this.Name = "GetEmployeesForm";

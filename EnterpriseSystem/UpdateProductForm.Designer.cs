@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(UpdateProductForm));
             this.ClearFields_button = new System.Windows.Forms.Button();
             this.EditProduct_button = new System.Windows.Forms.Button();
             this.EditProduct_label = new System.Windows.Forms.Label();
@@ -110,6 +111,7 @@
             this.Controls.Add(this.ProductSellingPrice_textBox);
             this.Controls.Add(this.ProductType_textBox);
             this.Controls.Add(this.ProductName_textBox);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximizeBox = false;
             this.MaximumSize = new System.Drawing.Size(500, 410);
             this.MinimumSize = new System.Drawing.Size(500, 410);

@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ManagerForm));
             this.ManagerHeader_label = new System.Windows.Forms.Label();
             this.CreateEmployee_button = new System.Windows.Forms.Button();
             this.GetEmployees_button = new System.Windows.Forms.Button();
@@ -79,6 +80,7 @@
             this.Controls.Add(this.GetEmployees_button);
             this.Controls.Add(this.CreateEmployee_button);
             this.Controls.Add(this.ManagerHeader_label);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximizeBox = false;
             this.MaximumSize = new System.Drawing.Size(500, 400);
             this.MinimumSize = new System.Drawing.Size(500, 400);

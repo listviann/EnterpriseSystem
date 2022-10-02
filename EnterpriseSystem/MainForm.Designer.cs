@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainForm));
             this.LoginAsManager_button = new System.Windows.Forms.Button();
             this.LoginAsEmployee_button = new System.Windows.Forms.Button();
             this.Welcome_label = new System.Windows.Forms.Label();
@@ -196,6 +197,7 @@
             this.Controls.Add(this.LoginAsEmployee_button);
             this.Controls.Add(this.LoginAsManager_button);
             this.Controls.Add(this.MainFormMenu_menuStrip);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MainMenuStrip = this.MainFormMenu_menuStrip;
             this.MaximizeBox = false;
             this.MaximumSize = new System.Drawing.Size(500, 500);

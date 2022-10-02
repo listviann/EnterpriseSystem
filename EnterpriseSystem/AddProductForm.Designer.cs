@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(AddProductForm));
             this.ProductSellingPrice_textBox = new System.Windows.Forms.TextBox();
             this.ProductType_textBox = new System.Windows.Forms.TextBox();
             this.ProductName_textBox = new System.Windows.Forms.TextBox();
@@ -110,6 +111,7 @@
             this.Controls.Add(this.ProductSellingPrice_textBox);
             this.Controls.Add(this.ProductType_textBox);
             this.Controls.Add(this.ProductName_textBox);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximizeBox = false;
             this.Name = "AddProductForm";
             this.Text = "Add product";

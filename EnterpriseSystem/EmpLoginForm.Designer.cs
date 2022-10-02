@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(EmpLoginForm));
             this.EmpId_label = new System.Windows.Forms.Label();
             this.EmpId_textBox = new System.Windows.Forms.TextBox();
             this.EmpSignIn_button = new System.Windows.Forms.Button();
@@ -73,6 +74,7 @@
             this.Controls.Add(this.EmpId_textBox);
             this.Controls.Add(this.EmpId_label);
             this.ForeColor = System.Drawing.Color.White;
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximizeBox = false;
             this.MaximumSize = new System.Drawing.Size(330, 174);
             this.MinimizeBox = false;
