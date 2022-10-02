@@ -1,4 +1,5 @@
 ﻿using EnterpriseSystem.Entities;
+using EnterpriseSystem.Exceptions;
 
 namespace EnterpriseSystem
 {
@@ -32,6 +33,11 @@ namespace EnterpriseSystem
 
         private void EmpSignIn_button_Click(object sender, EventArgs e)
         {
+            SignIn();
+        }
+
+        private void SignIn()
+        {
             int id = Convert.ToInt32(EmpId_textBox.Text);
 
             try
@@ -41,9 +47,9 @@ namespace EnterpriseSystem
                 employeeForm.Show();
                 this.Close();
             }
-            catch
+            catch (EmployeeNotFoundException ex)
             {
-                MessageBox.Show("Cannot sign in as employee");
+                MessageBox.Show(ex.Message);
                 EmpId_textBox.Text = "1";
             }
         }

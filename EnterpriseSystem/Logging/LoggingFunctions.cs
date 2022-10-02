@@ -6,9 +6,16 @@ namespace EnterpriseSystem.Logging
     {
         public static void LogMessage(string message, string filepath)
         {
-            Console.WriteLine(message);
-            Debug.WriteLine(message);
-            File.AppendAllText(filepath, message + "\n");
+            try
+            {
+                Console.WriteLine(message);
+                Debug.WriteLine(message);
+                File.AppendAllText(filepath, message + "\n");
+            }
+            catch
+            {
+                throw new FileNotFoundException();
+            }
         }
     }
 }

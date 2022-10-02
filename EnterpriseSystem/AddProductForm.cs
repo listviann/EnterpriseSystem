@@ -47,7 +47,12 @@ namespace EnterpriseSystem
                 ProductSellingPrice_textBox.Text = "1";
             }
 
-            _employee.CreateProduct(ProductName_textBox.Text, ProductType_textBox.Text, 
+            AddProduct();
+        }
+
+        private void AddProduct()
+        {
+            _employee.CreateProduct(ProductName_textBox.Text, ProductType_textBox.Text,
                 Convert.ToDecimal(ProductSellingPrice_textBox.Text));
         }
     }

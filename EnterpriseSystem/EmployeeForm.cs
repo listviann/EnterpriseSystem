@@ -35,5 +35,7 @@ namespace EnterpriseSystem
             GetProductsForm getProductsForm = new(_employee);
             getProductsForm.Show();
         }
+
+
     }
 }

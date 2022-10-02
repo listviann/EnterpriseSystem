@@ -1,4 +1,5 @@
 ﻿using EnterpriseSystem.Entities;
+using EnterpriseSystem.Exceptions;
 
 namespace EnterpriseSystem
 {
@@ -25,10 +26,7 @@ namespace EnterpriseSystem
 
         private void EditProduct_button_Click(object sender, EventArgs e)
         {
-            Product? prod = (Product)Products_listBox.SelectedItem;
-            int prodId = prod.Id;
-            UpdateProductForm updateProductForm = new(_employee, prodId);
-            updateProductForm.Show();
+            EditProduct();
         }
 
         private void GetProductsForm_Load(object sender, EventArgs e)
@@ -38,7 +36,32 @@ namespace EnterpriseSystem
 
         private void DeleteProduct_button_Click(object sender, EventArgs e)
         {
+            RemoveProduct();
+        }
+
+        private void EditProduct()
+        {
             Product? product = (Product)Products_listBox.SelectedItem;
+
+            if (product == null)
+            {
+                throw new ProductNotFoundException();
+            }
+
+            int prodId = product.Id;
+            UpdateProductForm updateProductForm = new(_employee, prodId);
+            updateProductForm.Show();
+        }
+
+        private void RemoveProduct()
+        {
+            Product? product = (Product)Products_listBox.SelectedItem;
+
+            if (product == null)
+            {
+                throw new ProductNotFoundException();
+            }
+
             int prodId = product.Id;
             _employee.DeleteProduct(prodId);
 

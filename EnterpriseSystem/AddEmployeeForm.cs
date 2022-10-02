@@ -122,9 +122,19 @@ namespace EnterpriseSystem
             int day = Convert.ToInt32(EmployeeBirthDay_textBox.Text);
             int month = Convert.ToInt32(EmployeeBirthMonth_textBox.Text);
             int year = Convert.ToInt32(EmployeeBirthYear_textBox.Text);
+
+            AddEmployee();
+        }
+
+        private void AddEmployee()
+        {
+            decimal salary = Convert.ToDecimal(EmployeeSalary_textBox.Text);
+            int day = Convert.ToInt32(EmployeeBirthDay_textBox.Text);
+            int month = Convert.ToInt32(EmployeeBirthMonth_textBox.Text);
+            int year = Convert.ToInt32(EmployeeBirthYear_textBox.Text);
             DateTime date = new DateTime(year, month, day);
 
-            _manager.CreateEmployee(EmployeeName_textBox.Text, EmployeeEmail_textBox.Text, EmployeePhoneNumber_textBox.Text, date, 
+            _manager.CreateEmployee(EmployeeName_textBox.Text, EmployeeEmail_textBox.Text, EmployeePhoneNumber_textBox.Text, date,
                 (Position)EmployeePosition_comboBox.SelectedItem, (EmployeeType)EmployeeType_comboBox.SelectedItem, salary);
         }
     }

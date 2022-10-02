@@ -111,7 +111,7 @@ namespace EnterpriseSystem.Entities
             }
             else
             {
-                throw new ProductNotFoundException("Product not found", id);
+                throw new ProductNotFoundException(Config.PRODUCT_NOT_FOUND, id);
             }
         }
 
@@ -134,7 +134,7 @@ namespace EnterpriseSystem.Entities
             }
             else
             {
-                throw new ProductNotFoundException("Product not found", id);
+                throw new ProductNotFoundException(Config.PRODUCT_NOT_FOUND, id);
             }
         }
         #endregion
@@ -177,7 +177,6 @@ namespace EnterpriseSystem.Entities
         {
             foreach (var error in results)
             {
-                //Console.WriteLine(error.ErrorMessage);
                 OnModelNotifying(error.ErrorMessage);
                 LoggerViewModel.Logger.Log(error.ErrorMessage, Config.FILEPATH);
             }

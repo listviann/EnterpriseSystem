@@ -101,6 +101,12 @@ namespace EnterpriseSystem
                 EmployeeBirthYear_textBox.Text = "0001";
             }
 
+            EditEmployee();
+            this.Close();
+        }
+
+        private void EditEmployee()
+        {
             decimal salary = Convert.ToDecimal(EmployeeSalary_textBox.Text);
             int day = Convert.ToInt32(EmployeeBirthDay_textBox.Text);
             int month = Convert.ToInt32(EmployeeBirthMonth_textBox.Text);
@@ -109,8 +115,6 @@ namespace EnterpriseSystem
 
             _manager.UpdateEmployee(_id, EmployeeName_textBox.Text, EmployeeEmail_textBox.Text, EmployeePhoneNumber_textBox.Text,
                 birthDate, (Position)EmployeePosition_comboBox.SelectedItem, salary);
-
-            this.Close();
         }
     }
 }
