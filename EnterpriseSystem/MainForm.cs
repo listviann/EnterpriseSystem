@@ -15,6 +15,7 @@ namespace EnterpriseSystem
         {
             InitializeComponent();
 
+            this.CenterToScreen();
             
             LoggerViewModel.Logger.Notify += LoggingFunctions.LogMessage;
             _manager = new Manager();
@@ -40,7 +41,7 @@ namespace EnterpriseSystem
 
         private void MainForm_Load(object sender, EventArgs e)
         {
-
+            
         }
 
         private void LoginAsManager_button_Click(object sender, EventArgs e)
