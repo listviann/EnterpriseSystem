@@ -1,0 +1,171 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="EnterpriseSystem.Entities.Employee">
+    <Position X="17.25" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>IACCACBAADMAAAAkIAAIQAyAQAAAAAAAwAAAgAAAAAA=</HashCode>
+      <FileName>Entities\Employee.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="EnterpriseSystem.Entities.FixedEmployee">
+    <Position X="20.5" Y="7.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>IAAAAAAAAAAAAAAEAAAAAAiAAAAAAAAAwAAAAAAAAAA=</HashCode>
+      <FileName>Entities\FixedEmployee.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="EnterpriseSystem.Entities.HourEmployee">
+    <Position X="14.25" Y="7.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>IAAAAAAAAAAAAAAEAAAAAAiAAAAAAAAAwAAAAAAAAAA=</HashCode>
+      <FileName>Entities\HourEmployee.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="EnterpriseSystem.Entities.Product">
+    <Position X="5.5" Y="0.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAACAAAQAAAAAAAEAAAAAAQEAAAAAAAAAAAEAAAAAAA=</HashCode>
+      <FileName>Entities\Product.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="EnterpriseSystem.Exceptions.EmployeeNotFoundException">
+    <Position X="8" Y="0.5" Width="2.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAACAAA=</HashCode>
+      <FileName>Exceptions\EmployeeNotFoundException.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="EnterpriseSystem.Exceptions.ProductNotFoundException">
+    <Position X="10.75" Y="0.5" Width="2.5" />
+    <TypeIdentifier>
+      <HashCode>EAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Exceptions\ProductNotFoundException.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="EnterpriseSystem.Logging.Logger">
+    <Position X="7.75" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAgAAABAQAAAgAAAAAQ=</HashCode>
+      <FileName>Logging\Logger.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="EnterpriseSystem.Logging.LoggerViewModel">
+    <Position X="8.75" Y="6.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Logging\LoggerViewModel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="EnterpriseSystem.Logging.LoggingFunctions">
+    <Position X="6.75" Y="6.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Logging\LoggingFunctions.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="EnterpriseSystem.Serialization.Json.JsonManager&lt;T&gt;" BaseTypeListCollapsed="true">
+    <Position X="10.75" Y="4" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAgAgAAAAAAAAAAgAAAAAAAAAAAAA=</HashCode>
+      <FileName>Serialization\Json\JsonManager.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="EnterpriseSystem.Serialization.Xml.XmlManager&lt;T&gt;" BaseTypeListCollapsed="true">
+    <Position X="12.5" Y="4" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAgAAAAAAAAAAgAAAAAAAAAAAQA=</HashCode>
+      <FileName>Serialization\Xml\XmlManager.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="EnterpriseSystem.Service.BirthDateMaxValueAttribute">
+    <Position X="1.5" Y="9.75" Width="2.25" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAgAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Service\BirthDateMaxValueAttribute.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="EnterpriseSystem.Service.Config">
+    <Position X="3" Y="3.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAABAAAABAAEAAAAA=</HashCode>
+      <FileName>Service\Config.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="EnterpriseSystem.Service.EmployeeSorter" BaseTypeListCollapsed="true">
+    <Position X="2.75" Y="6.75" Width="2" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABAAAAAAAA=</HashCode>
+      <FileName>Service\EmployeeSorter.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="EnterpriseSystem.Service.FixedEmployeeConverter">
+    <Position X="0.5" Y="5" Width="2" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAQQAAAAAAAAAAAAAAAAAAAAAAAAAAAAACAA=</HashCode>
+      <FileName>Service\FixedEmployeeConverter.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="EnterpriseSystem.Service.HourEmployeeConverter">
+    <Position X="2.75" Y="5" Width="2" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAQQAAAAAAAAAAAAAAAAAAAAAAAAAAAAACAA=</HashCode>
+      <FileName>Service\HourEmployeeConverter.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="EnterpriseSystem.Service.NonNegativeAttribute">
+    <Position X="1.5" Y="8.25" Width="2.25" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAgAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Service\NonNegativeAttribute.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="EnterpriseSystem.Service.ProductSorter" BaseTypeListCollapsed="true">
+    <Position X="0.5" Y="6.75" Width="2" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABAAAAAAAA=</HashCode>
+      <FileName>Service\ProductSorter.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="EnterpriseSystem.Manager">
+    <Position X="6.75" Y="8" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AICAIAACABIAgACAIAAAIAAACAAAAAAIgAAAAAAAAAA=</HashCode>
+      <FileName>Manager.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Interface Name="EnterpriseSystem.Serialization.Abstract.ISerializer&lt;T&gt;">
+    <Position X="11.75" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAgAAAAAAAAAAgAAAAAAAAAAAAA=</HashCode>
+      <FileName>Serialization\Abstract\ISerializer.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="EnterpriseSystem.Service.IValidationHelper&lt;T&gt;">
+    <Position X="0.75" Y="3.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AACAAAAAABIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Service\IValidationHelper.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Enum Name="EnterpriseSystem.Entities.Position">
+    <Position X="5.5" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAgAAAAAAAAgAAAAAAAAQAAAAAAA=</HashCode>
+      <FileName>Entities\Employee.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="EnterpriseSystem.EmployeeType">
+    <Position X="9" Y="8" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAIAAAAAAABAAAA=</HashCode>
+      <FileName>Manager.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>
