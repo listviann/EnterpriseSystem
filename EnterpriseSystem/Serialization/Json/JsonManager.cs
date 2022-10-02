@@ -7,13 +7,12 @@ namespace EnterpriseSystem.Serialization.Json
 {
     public class JsonManager<T> : ISerializer<T>
     {
-        private readonly JsonSerializerSettings _settings = new JsonSerializerSettings();
+        private readonly JsonSerializerSettings _settings = new JsonSerializerSettings() { TypeNameHandling = TypeNameHandling.All };
 
         public JsonManager()
         {
             _settings.Converters.Add(new HourEmployeeConverter());
             _settings.Converters.Add(new FixedEmployeeConverter());
-            _settings.TypeNameHandling = TypeNameHandling.Auto;
         }
 
         public List<T> DeserializeData(string filename) => JsonConvert.DeserializeObject<List<T>>(File.ReadAllText(filename), _settings)!;

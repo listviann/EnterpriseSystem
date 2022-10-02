@@ -1,27 +1,15 @@
-﻿using EnterpriseSystem.Logging;
-using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
-using EnterpriseSystem.Entities;
+﻿using EnterpriseSystem.Entities;
 
 namespace EnterpriseSystem
 {
     public partial class AddProductForm : Form
     {
         private readonly Employee _employee;
-        private readonly Logger _logger;
 
-        public AddProductForm(Employee employee, Logger logger)
+        public AddProductForm(Employee employee)
         {
             InitializeComponent();
 
-            _logger = logger;
             _employee = employee;
 
             AddProduct_label.Left = (this.ClientSize.Width - AddProduct_label.Width) / 2;

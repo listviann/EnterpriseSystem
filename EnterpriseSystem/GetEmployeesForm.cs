@@ -1,30 +1,20 @@
 ﻿using EnterpriseSystem.Entities;
-using EnterpriseSystem.Logging;
-using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
 
 namespace EnterpriseSystem
 {
     public partial class GetEmployeesForm : Form
     {
-        private readonly Logger _logger;
         private readonly Manager _manager;
+        private readonly string[] _empTypes = {"All", "Hour", "Fixed" };
 
-        public GetEmployeesForm(Manager manager, Logger logger)
+        public GetEmployeesForm(Manager manager)
         {
             InitializeComponent();
 
             _manager = manager;
-            _logger = logger;
 
-            Employees_listBox.DataSource = _manager.GetEmployees().ToList();
+            Employees_listBox.DataSource = _manager.Employees;
+            employeeTypes_comboBox.DataSource = _empTypes;
 
             if (Employees_listBox.Items.Count == 0)
             {
@@ -51,7 +41,7 @@ namespace EnterpriseSystem
             Employee emp = (Employee)Employees_listBox.SelectedItem;
             int empId = emp.Id;
 
-            UpdateEmployeeForm updateEmployeeForm = new(_manager, _logger, empId);
+            UpdateEmployeeForm updateEmployeeForm = new(_manager, empId);
             updateEmployeeForm.Show();
         }
 
@@ -62,12 +52,31 @@ namespace EnterpriseSystem
             _manager.DeleteEmployee(empId);
 
             Employees_listBox.DataSource = null;
-            Employees_listBox.DataSource = _manager.GetEmployees().ToList();
+            Employees_listBox.DataSource = _manager.Employees;
         }
 
         private void Employees_listBox_SelectedIndexChanged(object sender, EventArgs e)
         {
 
+        }
+
+        private void employeeTypes_comboBox_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if ((string)employeeTypes_comboBox.SelectedItem == _empTypes[0])
+            {
+                Employees_listBox.DataSource = null;
+                Employees_listBox.DataSource = _manager.Employees;
+            }
+            else if ((string)employeeTypes_comboBox.SelectedItem == _empTypes[1])
+            {
+                Employees_listBox.DataSource = null;
+                Employees_listBox.DataSource = _manager.GetHourEmployees();
+            }
+            else if ((string)employeeTypes_comboBox.SelectedItem == _empTypes[2])
+            {
+                Employees_listBox.DataSource = null;
+                Employees_listBox.DataSource = _manager.GetFixedEmployees();
+            }
         }
     }
 }

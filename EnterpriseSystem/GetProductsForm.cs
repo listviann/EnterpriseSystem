@@ -1,31 +1,18 @@
-﻿using EnterpriseSystem.Logging;
-using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
-using EnterpriseSystem.Entities;
+﻿using EnterpriseSystem.Entities;
 
 namespace EnterpriseSystem
 {
     public partial class GetProductsForm : Form
     {   
-        private readonly Logger _logger;
         private readonly Employee _employee;
         
-        public GetProductsForm(Employee employee, Logger logger)
+        public GetProductsForm(Employee employee)
         {
             InitializeComponent();
             
-            _logger = logger;
             _employee = employee;
 
             Products_listBox.DataSource = _employee.ProductsList;
-            _employee.GetProducts();
 
             if (Products_listBox.Items.Count == 0)
             {
@@ -40,7 +27,7 @@ namespace EnterpriseSystem
         {
             Product? prod = (Product)Products_listBox.SelectedItem;
             int prodId = prod.Id;
-            UpdateProductForm updateProductForm = new(_employee, _logger, prodId);
+            UpdateProductForm updateProductForm = new(_employee, prodId);
             updateProductForm.Show();
         }
 

@@ -1,26 +1,13 @@
-﻿using EnterpriseSystem.Logging;
-using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
-
-namespace EnterpriseSystem
+﻿namespace EnterpriseSystem
 {
     public partial class ManagerForm : Form
     {
-        private readonly Logger _logger;
         private readonly Manager _manager;
 
-        public ManagerForm(Manager manager, Logger logger)
+        public ManagerForm(Manager manager)
         {
             InitializeComponent();
 
-            _logger = logger;
             _manager = manager;
 
             ManagerHeader_label.Left = (this.ClientSize.Width - ManagerHeader_label.Width) / 2;
@@ -33,13 +20,13 @@ namespace EnterpriseSystem
 
         private void CreateEmployee_button_Click(object sender, EventArgs e)
         {
-            AddEmployeeForm addEmployeeForm = new(_manager, _logger);
+            AddEmployeeForm addEmployeeForm = new(_manager);
             addEmployeeForm.Show();
         }
 
         private void GetEmployees_button_Click(object sender, EventArgs e)
         {
-            GetEmployeesForm getEmployeesForm = new(_manager, _logger);
+            GetEmployeesForm getEmployeesForm = new(_manager);
             getEmployeesForm.Show();
         }
     }

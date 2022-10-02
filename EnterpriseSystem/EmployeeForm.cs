@@ -1,30 +1,17 @@
-﻿using Accessibility;
-using EnterpriseSystem.Logging;
-using EnterpriseSystem.Entities;
-using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
+﻿using EnterpriseSystem.Entities;
 
 namespace EnterpriseSystem
 {
     public partial class EmployeeForm : Form
     {
-        private readonly Logger _logger;
         private readonly Manager _manager;
         private readonly Employee _employee;
 
 
-        public EmployeeForm(Manager manager, Logger logger, Employee employee)
+        public EmployeeForm(Manager manager, Employee employee)
         {
             InitializeComponent();
 
-            _logger = logger;
             _manager = manager;
             _employee = employee;
             _employee.ModelNotify += DialogMessageFunctions.ShowMessage;
@@ -39,13 +26,13 @@ namespace EnterpriseSystem
 
         private void CreateProduct_button_Click(object sender, EventArgs e)
         {
-            AddProductForm addProductForm = new(_employee, _logger);
+            AddProductForm addProductForm = new(_employee);
             addProductForm.Show();
         }
 
         private void GetProducts_button_Click(object sender, EventArgs e)
         {
-            GetProductsForm getProductsForm = new(_employee, _logger);
+            GetProductsForm getProductsForm = new(_employee);
             getProductsForm.Show();
         }
     }

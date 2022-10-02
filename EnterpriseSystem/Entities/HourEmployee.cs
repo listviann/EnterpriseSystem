@@ -10,33 +10,33 @@ namespace EnterpriseSystem.Entities
         #region Constructors
         public HourEmployee() { }
         public HourEmployee(int id, string name, string email, string phoneNumber, 
-            decimal salary, DateTime birthDate, Position position, Logger logger)
-            : base(id, name, email, phoneNumber, salary, birthDate, position, logger)
+            decimal salary, DateTime birthDate, Position position)
+            : base(id, name, email, phoneNumber, salary, birthDate, position)
         { }
         #endregion
 
         #region CRUD operations
         public override void CreateProduct(string name, string productType, decimal sellingPrice)
         {
-            _logger.Log($"Hour salary employee [{Id} - {Name}] created a new product.", Config.FILEPATH);
+            LoggerViewModel.Logger.Log($"Hour salary employee [{Id} - {Name}] created a new product.", Config.FILEPATH);
             base.CreateProduct(name, productType, sellingPrice);
         }
 
         public override void GetProducts()
         {
-            _logger.Log($"Products created by a fixed salary employee [{Id} - {Name}]:", Config.FILEPATH);
+            LoggerViewModel.Logger.Log($"Products created by a fixed salary employee [{Id} - {Name}]:", Config.FILEPATH);
             base.GetProducts();
         }
 
         public override void UpdateProduct(int id, string name, string productType, decimal sellingPrice)
         {
-            _logger.Log($"Hour salary employee [{Id} - {Name}] updated the product with id: {id}", Config.FILEPATH);
+            LoggerViewModel.Logger.Log($"Hour salary employee [{Id} - {Name}] updated the product with id: {id}", Config.FILEPATH);
             base.UpdateProduct(id, name, productType, sellingPrice);
         }
 
         public override void DeleteProduct(int id)
         {
-            _logger.Log($"Hour salary employee [{Id} - {Name}] deleted the product with id: {id}", Config.FILEPATH);
+            LoggerViewModel.Logger.Log($"Hour salary employee [{Id} - {Name}] deleted the product with id: {id}", Config.FILEPATH);
             base.DeleteProduct(id);
         }
         #endregion

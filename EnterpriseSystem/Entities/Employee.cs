@@ -17,7 +17,6 @@ namespace EnterpriseSystem.Entities
     public abstract class Employee : IValidationHelper<Product>
     {
         public event Action<string> ModelNotify;
-        protected readonly Logger _logger;
 
         private static readonly Dictionary<Position, decimal> _bonusList = new Dictionary<Position, decimal>()
         {
@@ -68,7 +67,7 @@ namespace EnterpriseSystem.Entities
         #region Constructors
         protected Employee() { }
         protected Employee(int id, string name, string email, string phoneNumber,
-            decimal salary, DateTime birthDate, Position position, Logger logger)
+            decimal salary, DateTime birthDate, Position position)
         {
             Id = id;
             Name = name;
@@ -77,7 +76,6 @@ namespace EnterpriseSystem.Entities
             BirthDate = birthDate;
             Position = position;
             Salary = salary;
-            _logger = logger;
         }
         #endregion
 
@@ -119,10 +117,10 @@ namespace EnterpriseSystem.Entities
 
         public virtual void GetProducts()
         {
-            _logger.Log("Products created by employee", Config.FILEPATH);
+            LoggerViewModel.Logger.Log("Products created by employee", Config.FILEPATH);
             foreach (var p in ProductsList)
             {
-                _logger.Log(p.ToString(), Config.FILEPATH);
+                LoggerViewModel.Logger.Log(p.ToString(), Config.FILEPATH);
             }
         }
 
@@ -181,7 +179,7 @@ namespace EnterpriseSystem.Entities
             {
                 //Console.WriteLine(error.ErrorMessage);
                 OnModelNotifying(error.ErrorMessage);
-                _logger.Log(error.ErrorMessage, Config.FILEPATH);
+                LoggerViewModel.Logger.Log(error.ErrorMessage, Config.FILEPATH);
             }
         }
         #endregion

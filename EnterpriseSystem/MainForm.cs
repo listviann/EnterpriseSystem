@@ -2,22 +2,21 @@ using EnterpriseSystem.Entities;
 using EnterpriseSystem.Logging;
 using EnterpriseSystem.Serialization.Json;
 using EnterpriseSystem.Serialization.Xml;
-using System.Diagnostics;
+using EnterpriseSystem.Service;
 
 namespace EnterpriseSystem
 {
     public partial class MainForm : Form
     {
-        private readonly Logger _logger;
         private readonly Manager _manager;
 
         public MainForm()
         {
             InitializeComponent();
 
-            _logger = Logger.Instance;
-            _logger.Notify += LoggingFunctions.LogMessage;
-            _manager = new Manager(_logger);
+            
+            LoggerViewModel.Logger.Notify += LoggingFunctions.LogMessage;
+            _manager = new Manager();
             _manager.ModelNotify += DialogMessageFunctions.ShowMessage;
 
             jsonSave_saveFileDialog.Filter = "JSON file(*.json)|*.json|Text file(*.txt)|*.txt";
@@ -45,13 +44,13 @@ namespace EnterpriseSystem
 
         private void LoginAsManager_button_Click(object sender, EventArgs e)
         {
-            ManagerForm managerForm = new(_manager, _logger);
+            ManagerForm managerForm = new(_manager);
             managerForm.Show();
         }
 
         private void LoginAsEmployee_button_Click(object sender, EventArgs e)
         {
-            EmpLoginForm empLoginForm = new(_manager, _logger);
+            EmpLoginForm empLoginForm = new(_manager);
             empLoginForm.Show();
         }
 
@@ -80,7 +79,7 @@ namespace EnterpriseSystem
         private void SaveToJsonFile(string filename)
         {
             JsonManager<Employee> jsonManager = new JsonManager<Employee>();
-            jsonManager.SerializeData(_manager.GetEmployees().ToList(), filename);
+            jsonManager.SerializeData(_manager.Employees, filename);
         }
 
         private void OpenJsonFile(string filename)
@@ -89,29 +88,8 @@ namespace EnterpriseSystem
             try
             {
                 List<Employee> objects = jsonManager.DeserializeData(filename);
-                
                 _manager.Employees.Clear();
-                foreach (var obj in objects)
-                {
-                    if (obj is HourEmployee)
-                    {
-                        _manager.CreateEmployee(obj.Name!, obj.Email!, obj.PhoneNumber!, obj.BirthDate,
-                            obj.Position, EmployeeType.Hour, obj.Salary);
-                        foreach (var prod in obj.ProductsList)
-                        {
-                            _manager.GetEmployeeById(obj.Id).CreateProduct(prod.Name!, prod.ProductType!, prod.SellingPrice);
-                        }
-                    }
-                    else if (obj is FixedEmployee)
-                    {
-                        _manager.CreateEmployee(obj.Name!, obj.Email!, obj.PhoneNumber!, obj.BirthDate,
-                            obj.Position, EmployeeType.Fixed, obj.Salary);
-                        foreach (var prod in obj.ProductsList)
-                        {
-                            _manager.GetEmployeeById(obj.Id).CreateProduct(prod.Name!, prod.ProductType!, prod.SellingPrice);
-                        }
-                    }
-                }
+                _manager.Employees = objects;
             }
             catch (Exception ex)
             {
@@ -122,38 +100,17 @@ namespace EnterpriseSystem
         private void SaveToXmlFile(string filename)
         {
             XmlManager<Employee> xmlManager = new XmlManager<Employee>();
-            xmlManager.SerializeData(_manager.GetEmployees().ToList(), filename);
+            xmlManager.SerializeData(_manager.Employees, filename);
         }
 
         private void OpenXmlFile(string filename)
         {
             XmlManager<Employee> xmlManager = new XmlManager<Employee>();
-            List<Employee> objects = xmlManager.DeserializeData(filename);
-            _manager.Employees.Clear();
-
             try
             {
-                foreach (var obj in objects)
-                {
-                    if (obj is HourEmployee)
-                    {
-                        _manager.CreateEmployee(obj.Name!, obj.Email!, obj.PhoneNumber!, obj.BirthDate,
-                            obj.Position, EmployeeType.Hour, obj.Salary);
-                        foreach (var prod in obj.ProductsList)
-                        {
-                            _manager.GetEmployeeById(obj.Id).CreateProduct(prod.Name!, prod.ProductType!, prod.SellingPrice);
-                        }
-                    }
-                    else if (obj is FixedEmployee)
-                    {
-                        _manager.CreateEmployee(obj.Name!, obj.Email!, obj.PhoneNumber!, obj.BirthDate,
-                            obj.Position, EmployeeType.Fixed, obj.Salary);
-                        foreach (var prod in obj.ProductsList)
-                        {
-                            _manager.GetEmployeeById(obj.Id).CreateProduct(prod.Name!, prod.ProductType!, prod.SellingPrice);
-                        }
-                    }
-                }
+                List<Employee> objects = xmlManager.DeserializeData(filename);
+                _manager.Employees.Clear();
+                _manager.Employees = objects;
             }
             catch (Exception ex)
             {

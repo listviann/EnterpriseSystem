@@ -1,27 +1,12 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Diagnostics;
-using System.Drawing;
-using System.Drawing.Imaging;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
-using System.Xml.Linq;
-using EnterpriseSystem.Entities;
-using EnterpriseSystem.Logging;
-
+﻿using EnterpriseSystem.Entities;
 
 namespace EnterpriseSystem
 {
     public partial class AddEmployeeForm : Form
     {
-        private readonly Logger _logger;
         private readonly Manager _manager;
 
-        public AddEmployeeForm(Manager manager, Logger logger)
+        public AddEmployeeForm(Manager manager)
         {
             InitializeComponent();
 
@@ -42,13 +27,7 @@ namespace EnterpriseSystem
             EmployeePosition_comboBox.DataSource = Enum.GetValues(typeof(Position));
             EmployeeType_comboBox.DataSource = Enum.GetValues(typeof(EmployeeType));
 
-            //_logger = Logger.Instance;
-            //_manager = new Manager(_logger);
-            _logger = logger;
             _manager = manager;
-
-            //_manager.ModelNotify += ShowMessage;
-            //_logger.Notify += LoggingFunctions.LogMessage;
         }
 
         private void AddEmployeeForm_Load(object sender, EventArgs e)

@@ -1,28 +1,16 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
-using EnterpriseSystem.Entities;
-using EnterpriseSystem.Logging;
+﻿using EnterpriseSystem.Entities;
 
 namespace EnterpriseSystem
 {
     public partial class EmpLoginForm : Form
     {
         private readonly Manager _manager;
-        private readonly Logger _logger;
 
-        public EmpLoginForm(Manager manager, Logger logger)
+        public EmpLoginForm(Manager manager)
         {
             InitializeComponent();
 
             _manager = manager;
-            _logger = logger;
 
             EmpId_label.Left = (this.ClientSize.Width - EmpId_label.Width) / 2;
             EmpId_textBox.Left = (this.ClientSize.Width - EmpId_textBox.Width) / 2;
@@ -49,7 +37,7 @@ namespace EnterpriseSystem
             try
             {
                 Employee? emp = _manager.GetEmployeeById(id);
-                EmployeeForm employeeForm = new(_manager, _logger, emp);
+                EmployeeForm employeeForm = new(_manager, emp);
                 employeeForm.Show();
                 this.Close();
             }

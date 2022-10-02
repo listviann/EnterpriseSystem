@@ -2,12 +2,7 @@
 using EnterpriseSystem.Logging;
 using EnterpriseSystem.Service;
 using EnterpriseSystem.Entities;
-using System;
-using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Diagnostics;
 
 namespace EnterpriseSystem
@@ -21,17 +16,10 @@ namespace EnterpriseSystem
     {
         public event Action<string> ModelNotify;
 
-        #region Private fields
-        public SinglyLinkedList<Employee> Employees { get; set; } = new SinglyLinkedList<Employee>();
-        private readonly SinglyLinkedList<FixedEmployee> _fixedEmployees = new SinglyLinkedList<FixedEmployee>();
-        private readonly SinglyLinkedList<HourEmployee> _hourEmployees = new SinglyLinkedList<HourEmployee>();
-        private readonly Logger _logger;
-        #endregion
+        public List<Employee> Employees { get; set; } = new List<Employee>();
 
-        public Manager(Logger logger)
-        {
-            _logger = logger;
-        }
+        public Manager()
+        { }
 
         #region CRUD operations
         public void CreateEmployee(string name, string email, string phoneNumber, DateTime birthDate,
@@ -43,10 +31,10 @@ namespace EnterpriseSystem
             switch (empType)
             {
                 case EmployeeType.Hour:
-                    emp = new HourEmployee(id, name, email, phoneNumber, salary, birthDate, position, _logger);
+                    emp = new HourEmployee(id, name, email, phoneNumber, salary, birthDate, position);
                     break;
                 case EmployeeType.Fixed:
-                    emp = new FixedEmployee(id, name, email, phoneNumber, salary, birthDate, position, _logger);
+                    emp = new FixedEmployee(id, name, email, phoneNumber, salary, birthDate, position);
                     break;
             }
 
@@ -55,7 +43,7 @@ namespace EnterpriseSystem
                 Employees.Add(emp!);
                 SortAllEmployees();
                 Debug.WriteLine(Employees.Count);
-                _logger.Log($"Manager added a new employee with id: {emp!.Id}", Config.FILEPATH);
+                LoggerViewModel.Logger.Log($"Manager added a new employee with id: {emp!.Id}", Config.FILEPATH);
             }
         }
 
@@ -82,10 +70,8 @@ namespace EnterpriseSystem
                 emp.Salary = salary;
 
                 SortAllEmployees();
-                SortHourEmployees();
-                SortFixedEmployees();
 
-                _logger.Log($"Employee with id: {emp.Id} has been edited", Config.FILEPATH);
+                LoggerViewModel.Logger.Log($"Employee with id: {emp.Id} has been edited", Config.FILEPATH);
             }
             else
             {
@@ -109,16 +95,18 @@ namespace EnterpriseSystem
         // covariation is used here
         public IEnumerable<Employee> GetEmployees()
         {
-            _logger.Log("ALL EMPLOYEES LIST", Config.FILEPATH);
+            LoggerViewModel.Logger.Log("ALL EMPLOYEES LIST", Config.FILEPATH);
             foreach (var e in Employees)
             {
-                _logger.Log(e.ToString(), Config.FILEPATH);
+                LoggerViewModel.Logger.Log(e.ToString(), Config.FILEPATH);
             }
             return Employees;
         }
 
         public IEnumerable<Employee> GetHourEmployees()
         {
+            List<HourEmployee> _hourEmployees = new List<HourEmployee>();
+
             foreach (var e in Employees)
             {
                 if (e is HourEmployee)
@@ -127,16 +115,18 @@ namespace EnterpriseSystem
                 }
             }
 
-            _logger.Log("HOUR WAGE EMPLOYEES LIST", Config.FILEPATH);
+            LoggerViewModel.Logger.Log("HOUR WAGE EMPLOYEES LIST", Config.FILEPATH);
             foreach (var e in _hourEmployees)
             {
-                _logger.Log(e.ToString(), Config.FILEPATH);
+                LoggerViewModel.Logger.Log(e.ToString(), Config.FILEPATH);
             }
             return _hourEmployees;
         }
 
         public IEnumerable<Employee> GetFixedEmployees()
         {
+            List<FixedEmployee> _fixedEmployees = new List<FixedEmployee>();
+
             foreach (var e in Employees)
             {
                 if (e is FixedEmployee)
@@ -144,10 +134,13 @@ namespace EnterpriseSystem
                     _fixedEmployees.Add((FixedEmployee)e);
                 }
             }
-            _logger.Log("FIXED WAGE EMPLOYEES LIST", Config.FILEPATH);
+
+            _fixedEmployees.Sort(new EmployeeSorter());
+
+            LoggerViewModel.Logger.Log("FIXED WAGE EMPLOYEES LIST", Config.FILEPATH);
             foreach (var e in _fixedEmployees)
             {
-                _logger.Log(e.ToString(), Config.FILEPATH);
+                LoggerViewModel.Logger.Log(e.ToString(), Config.FILEPATH);
             }
             return _fixedEmployees;
         }
@@ -157,12 +150,10 @@ namespace EnterpriseSystem
             Employee? emp = Employees?.FirstOrDefault(e => e.Id == id);
             if (emp != null)
             {
-                Employees?.Delete(emp);
+                Employees?.Remove(emp);
                 SortAllEmployees();
-                SortHourEmployees();
-                SortFixedEmployees();
 
-                _logger.Log($"Employee with id: {emp.Id} has been deleted", Config.FILEPATH);
+                LoggerViewModel.Logger.Log($"Employee with id: {emp.Id} has been deleted", Config.FILEPATH);
             }
             else
             {
@@ -171,23 +162,10 @@ namespace EnterpriseSystem
         }
         #endregion
 
-        #region Sorting
         private void SortAllEmployees()
         {
-            Employees.SortAll(new EmployeeSorter());
+            Employees.Sort(new EmployeeSorter());
         }
-
-        // contravariation is used here
-        private void SortFixedEmployees()
-        {
-            _fixedEmployees.SortAll(new EmployeeSorter());
-        }
-
-        private void SortHourEmployees()
-        {
-            _hourEmployees.SortAll(new EmployeeSorter());
-        }
-        #endregion
 
         #region Validation
         public bool IsValidObject(Employee entity)
@@ -228,7 +206,7 @@ namespace EnterpriseSystem
             foreach (var error in results)
             {
                 ShowModelMessage(error.ErrorMessage);
-                _logger.Log(error.ErrorMessage, Config.FILEPATH);
+                LoggerViewModel.Logger.Log(error.ErrorMessage, Config.FILEPATH);
                 //Console.WriteLine(error.ErrorMessage);
             }
         }

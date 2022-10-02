@@ -1,31 +1,17 @@
-﻿using EnterpriseSystem.Logging;
-using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
-using EnterpriseSystem.Entities;
+﻿using EnterpriseSystem.Entities;
 
 namespace EnterpriseSystem
 {
     public partial class UpdateEmployeeForm : Form
     {
-        private readonly Logger _logger;
         private readonly Manager _manager;
         private readonly int _id;
-        //private readonly Employee _employee;
 
-        public UpdateEmployeeForm(Manager manager, Logger logger, int id)
+        public UpdateEmployeeForm(Manager manager, int id)
         {
             InitializeComponent();
 
             _manager = manager;
-            //_manager.ModelNotify += ShowMessage;
-            _logger = logger;
 
             Employee? emp = _manager.GetEmployeeById(id);
             _id = id;

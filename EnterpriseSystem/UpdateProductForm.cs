@@ -1,28 +1,16 @@
-﻿using EnterpriseSystem.Logging;
-using EnterpriseSystem.Entities;
-using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
+﻿using EnterpriseSystem.Entities;
 
 namespace EnterpriseSystem
 {
     public partial class UpdateProductForm : Form
     {
-        private readonly Logger _logger;
         private readonly Employee _employee;
         private readonly int _id;
 
-        public UpdateProductForm(Employee employee, Logger logger, int id)
+        public UpdateProductForm(Employee employee, int id)
         {
             InitializeComponent();
 
-            _logger = logger;
             _employee = employee;
             _id = id;
 
