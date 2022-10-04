@@ -170,6 +170,10 @@ namespace EnterpriseSystem
         //    });
         //}
 
+        // Sorting
+        // sorting runs asynchronously in one thread
+        // logging of sorting runs asynchronously in another thread
+        // thread of sorting is a child thread of logging thread
         public async Task SortAllEmployees()
         {
             var outer = await Task.Factory.StartNew(async () =>
@@ -182,6 +186,7 @@ namespace EnterpriseSystem
 
 
         #region Validation
+        // Validation of created object properties
         public bool IsValidObject(Employee entity)
         {
             var results = new List<ValidationResult>();
@@ -196,6 +201,7 @@ namespace EnterpriseSystem
             return true;
         }
 
+        // UpdateEmployee() method parameters validation before passing them to Employee class constructor
         public bool IsValidInput(object input, string propName)
         {
             var results = new List<ValidationResult>();
@@ -215,6 +221,7 @@ namespace EnterpriseSystem
             return true;
         }
 
+        // Shows and logs error messages if validation is failed
         public void NotifyValidationFailed(List<ValidationResult> results)
         {
             foreach (var error in results)

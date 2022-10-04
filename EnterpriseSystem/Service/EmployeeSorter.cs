@@ -2,6 +2,7 @@
 
 namespace EnterpriseSystem.Service
 {
+    // Sorter for Employee class objects and its successors
     public class EmployeeSorter : IComparer<Employee> // implemented contravariant generic interface
     {
         public int Compare(Employee employee, Employee other)

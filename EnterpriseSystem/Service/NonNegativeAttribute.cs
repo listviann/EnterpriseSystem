@@ -2,6 +2,8 @@
 
 namespace EnterpriseSystem.Service
 {
+    // Validation attribute for Salary property of Employee class
+    // Salary cannot be a negative
     public class NonNegativeAttribute : ValidationAttribute
     {
         public override bool IsValid(object? value)

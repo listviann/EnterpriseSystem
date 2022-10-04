@@ -5,6 +5,7 @@ using System.Net.Http.Headers;
 
 namespace EnterpriseSystem.Serialization.Json
 {
+    // class that contains logic for json serialization/deserialization
     public class JsonManager<T> : ISerializer<T>
     {
         private readonly JsonSerializerSettings _settings = new JsonSerializerSettings() { TypeNameHandling = TypeNameHandling.All };

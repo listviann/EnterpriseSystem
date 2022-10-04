@@ -12,6 +12,7 @@ namespace EnterpriseSystem.Entities
         Low, Middle, High
     }
 
+    // Base class for employees
     [XmlInclude(typeof(HourEmployee))]
     [XmlInclude(typeof(FixedEmployee))]
     public abstract class Employee : IValidationHelper<Product>
@@ -140,6 +141,7 @@ namespace EnterpriseSystem.Entities
         #endregion
 
         #region Validation
+        // Validation of created object properties
         public bool IsValidObject(Product entity)
         {
             var results = new List<ValidationResult>();
@@ -154,6 +156,7 @@ namespace EnterpriseSystem.Entities
             return true;
         }
 
+        // UpdateProduct() method parameters validation before passing them to Product class constructor
         public bool IsValidInput(object input, string propName)
         {
             var results = new List<ValidationResult>();
@@ -173,12 +176,13 @@ namespace EnterpriseSystem.Entities
             return true;
         }
 
+        // Shows and logs error messages if validation is failed
         public void NotifyValidationFailed(List<ValidationResult> results)
         {
             foreach (var error in results)
             {
-                OnModelNotifying(error.ErrorMessage);
-                LoggerViewModel.Logger.Log(error.ErrorMessage, Config.FILEPATH);
+                OnModelNotifying(error.ErrorMessage!);
+                LoggerViewModel.Logger.Log(error.ErrorMessage!, Config.FILEPATH);
             }
         }
         #endregion

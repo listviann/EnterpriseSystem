@@ -8,6 +8,7 @@ using System.Threading.Tasks;
 
 namespace EnterpriseSystem.Service
 {
+    // A converter for FixedEmployee class to make json serialization/deserialization success
     public class FixedEmployeeConverter : JsonConverter
     {
         public override bool CanConvert(Type objectType)

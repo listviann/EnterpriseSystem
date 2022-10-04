@@ -2,6 +2,7 @@
 
 namespace EnterpriseSystem.Service
 {
+    // Sorter class for Product class objects
     public class ProductSorter : IComparer<Product>
     {
         public int Compare(Product product, Product other)

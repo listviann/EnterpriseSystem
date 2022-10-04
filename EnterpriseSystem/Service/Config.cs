@@ -3,6 +3,7 @@ using System.Configuration;
 
 namespace EnterpriseSystem.Service
 {
+    // config class that reads the project configuration file which is contaied in App.config file
     public class Config
     {
         private readonly static NameValueCollection appSettings = ConfigurationManager.AppSettings;

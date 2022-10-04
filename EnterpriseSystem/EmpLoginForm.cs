@@ -3,6 +3,7 @@ using EnterpriseSystem.Exceptions;
 
 namespace EnterpriseSystem
 {
+    // In this form user has to enter an employee's ID to do CRUD operations with employee's proudcts
     public partial class EmpLoginForm : Form
     {
         private readonly Manager _manager;
@@ -13,6 +14,7 @@ namespace EnterpriseSystem
 
             _manager = manager;
 
+            // Centering controls
             EmpId_label.Left = (this.ClientSize.Width - EmpId_label.Width) / 2;
             EmpId_textBox.Left = (this.ClientSize.Width - EmpId_textBox.Width) / 2;
             EmpSignIn_button.Left = (this.ClientSize.Width - EmpSignIn_button.Width) / 2;

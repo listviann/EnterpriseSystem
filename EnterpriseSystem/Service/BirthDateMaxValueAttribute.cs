@@ -2,6 +2,8 @@
 
 namespace EnterpriseSystem.Service
 {
+    // Validation attribute for BirthDate property of Employee class
+    // employee's birth date cannot be equal to or greater than current date time
     public class BirthDateMaxValueAttribute : ValidationAttribute
     {
         public override bool IsValid(object? value)

@@ -7,6 +7,7 @@ using System.Diagnostics;
 
 namespace EnterpriseSystem
 {
+    // The main menu and form in the application
     public partial class MainForm : Form
     {
         private readonly Manager _manager;
@@ -15,12 +16,15 @@ namespace EnterpriseSystem
         {
             InitializeComponent();
 
+            // centering form
             this.CenterToScreen();
             
+            // subscribing to events and creating the object of manager
             LoggerViewModel.Logger.Notify += LoggingFunctions.LogMessage;
             _manager = new Manager();
             _manager.ModelNotify += DialogMessageFunctions.ShowMessage;
 
+            // setting a file dialogs filters
             jsonSave_saveFileDialog.Filter = "JSON file(*.json)|*.json|Text file(*.txt)|*.txt";
             jsonOpen_openFileDialog.Filter = "JSON file(*.json)|*.json|Text file(*.txt)|*.txt";
             xmlSave_SaveFileDialog.Filter = "XML file(*.xml)|*.xml|Text file(*.txt)|*.txt";
@@ -29,6 +33,7 @@ namespace EnterpriseSystem
             Welcome_label.Left = (this.ClientSize.Width - Welcome_label.Width) / 2;
         }
 
+        // Exit program
         private void Quit_button_Click(object sender, EventArgs e)
         {
             string message = "Are you sure you want to quit?";
@@ -56,6 +61,7 @@ namespace EnterpriseSystem
             empLoginForm.Show();
         }
 
+        // file dialogs to save data in xml or json
         private void jsonFileToolStripMenuItem_Click(object sender, EventArgs e)
         {
             if (jsonSave_saveFileDialog.ShowDialog() == DialogResult.Cancel)
@@ -80,12 +86,15 @@ namespace EnterpriseSystem
             MessageBox.Show("Saved");
         }
 
+        // Logic of saving and opening json files
+        // save as json file
         private void SaveToJsonFile(string filename)
         {
             JsonManager<Employee> jsonManager = new JsonManager<Employee>();
             jsonManager.SerializeData(_manager.Employees, filename);
         }
 
+        // open json file
         private void OpenJsonFile(string filename)
         {
             JsonManager<Employee> jsonManager = new JsonManager<Employee>();
@@ -101,12 +110,15 @@ namespace EnterpriseSystem
             }
         }
 
+        // Logic of saving and opening xml files
+        // save as xml file 
         private void SaveToXmlFile(string filename)
         {
             XmlManager<Employee> xmlManager = new XmlManager<Employee>();
             xmlManager.SerializeData(_manager.Employees, filename);
         }
 
+        // open xml file
         private void OpenXmlFile(string filename)
         {
             XmlManager<Employee> xmlManager = new XmlManager<Employee>();
@@ -122,6 +134,7 @@ namespace EnterpriseSystem
             }
         }
 
+        // file dialogs for opening json or xml files
         private void jsonFileToolStripMenuItem1_Click(object sender, EventArgs e)
         {
             if (jsonOpen_openFileDialog.ShowDialog() == DialogResult.Cancel)
@@ -146,6 +159,7 @@ namespace EnterpriseSystem
             MessageBox.Show("Opened");
         }
 
+        // Go to About form
         private void aboutToolStripMenuItem_Click(object sender, EventArgs e)
         {
             AboutForm aboutForm = new();

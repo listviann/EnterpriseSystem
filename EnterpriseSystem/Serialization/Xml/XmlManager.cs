@@ -5,6 +5,7 @@ using System.Xml.Serialization;
 
 namespace EnterpriseSystem.Serialization.Xml
 {
+    // class that contains logic for json serialization/deserialization
     public class XmlManager<T> : ISerializer<T>
     {
         private readonly XmlSerializer _formatter = new XmlSerializer(typeof(List<Employee>));
