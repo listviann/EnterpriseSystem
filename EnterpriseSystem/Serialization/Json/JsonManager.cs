@@ -10,14 +10,8 @@ namespace EnterpriseSystem.Serialization.Json
     {
         private readonly JsonSerializerSettings _settings = new JsonSerializerSettings() { TypeNameHandling = TypeNameHandling.All };
 
-        public JsonManager()
-        {
-            _settings.Converters.Add(new HourEmployeeConverter());
-            _settings.Converters.Add(new FixedEmployeeConverter());
-        }
-
         public List<T> DeserializeData(string filename) => JsonConvert.DeserializeObject<List<T>>(File.ReadAllText(filename), _settings)!;
 
-        public void SerializeData(List<T> objects, string filename) => File.WriteAllText(filename, JsonConvert.SerializeObject(objects, Formatting.Indented));
+        public void SerializeData(List<T> objects, string filename) => File.WriteAllText(filename, JsonConvert.SerializeObject(objects, Formatting.Indented, _settings));
     }
 }
