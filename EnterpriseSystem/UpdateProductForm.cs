@@ -55,14 +55,16 @@ namespace EnterpriseSystem
                 ProductSellingPrice_textBox.Text = "1";
             }
 
-            EditProduct();
-            this.Close();
+            string prodName = ProductName_textBox.Text;
+            string prodType = ProductType_textBox.Text;
+            decimal prodPrice = Convert.ToDecimal(ProductSellingPrice_textBox.Text);
+
+            EditProduct(_id, prodName, prodType, prodPrice);
         }
 
-        private void EditProduct()
+        private void EditProduct(Guid id, string name, string type, decimal price)
         {
-            _employee.UpdateProduct(_id, ProductName_textBox.Text,
-                ProductType_textBox.Text, Convert.ToDecimal(ProductSellingPrice_textBox.Text));
+            _employee.UpdateProduct(id, name, type, price);
         }
     }
 }

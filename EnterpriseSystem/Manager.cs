@@ -162,14 +162,6 @@ namespace EnterpriseSystem
         }
         #endregion
 
-        //public void SortFinally()
-        //{
-        //    var outer = Task.Factory.StartNew(async () =>
-        //    {
-        //        await SortAllEmployees();
-        //    });
-        //}
-
         // Sorting
         // sorting runs asynchronously in one thread
         // logging of sorting runs asynchronously in another thread

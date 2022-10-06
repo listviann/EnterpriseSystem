@@ -31,5 +31,10 @@ namespace EnterpriseSystem
             string info = File.ReadAllText(Config.ABOUT_INFO);
             return info;
         }
+
+        private void Info_richTextBox_TextChanged(object sender, EventArgs e)
+        {
+
+        }
     }
 }

@@ -52,6 +52,7 @@
             this.Info_richTextBox.Size = new System.Drawing.Size(578, 410);
             this.Info_richTextBox.TabIndex = 14;
             this.Info_richTextBox.Text = "";
+            this.Info_richTextBox.TextChanged += new System.EventHandler(this.Info_richTextBox_TextChanged);
             // 
             // AboutForm
             // 

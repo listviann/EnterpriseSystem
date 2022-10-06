@@ -12,6 +12,7 @@ namespace EnterpriseSystem
 
             _employee = employee;
 
+            // Centering controls
             AddProduct_label.Left = (this.ClientSize.Width - AddProduct_label.Width) / 2;
             ProductName_textBox.Left = (this.ClientSize.Width - ProductName_textBox.Width) / 2;
             ProductType_textBox.Left = (this.ClientSize.Width - ProductType_textBox.Width) / 2;
@@ -47,13 +48,16 @@ namespace EnterpriseSystem
                 ProductSellingPrice_textBox.Text = "1";
             }
 
-            AddProduct();
+            string prodName = ProductName_textBox.Text;
+            string prodType = ProductType_textBox.Text;
+            decimal prodPrice = Convert.ToDecimal(ProductSellingPrice_textBox.Text);
+
+            AddProduct(prodName, prodType, prodPrice);
         }
 
-        private void AddProduct()
+        private void AddProduct(string name, string type, decimal price)
         {
-            _employee.CreateProduct(ProductName_textBox.Text, ProductType_textBox.Text,
-                Convert.ToDecimal(ProductSellingPrice_textBox.Text));
+            _employee.CreateProduct(name, type, price);
         }
     }
 }

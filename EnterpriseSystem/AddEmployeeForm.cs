@@ -10,6 +10,7 @@ namespace EnterpriseSystem
         {
             InitializeComponent();
 
+            // Centering controls
             AddEmployee_label.Left = (this.ClientSize.Width - AddEmployee_label.Width) / 2;
             EmployeeName_textBox.Left = (this.ClientSize.Width - EmployeeName_textBox.Width) / 2;
             EmployeeEmail_textBox.Left = (this.ClientSize.Width - EmployeeEmail_textBox.Width) / 2;
@@ -24,6 +25,7 @@ namespace EnterpriseSystem
             ClearFields_button.Left = (this.ClientSize.Width - ClearFields_button.Width) / 2;
             DateFields_panel.Left = (this.ClientSize.Width - DateFields_panel.Width) / 2;
 
+            // Setting elements of enums as data sources to comboBox controls
             EmployeePosition_comboBox.DataSource = Enum.GetValues(typeof(Position));
             EmployeeType_comboBox.DataSource = Enum.GetValues(typeof(EmployeeType));
 
@@ -122,20 +124,16 @@ namespace EnterpriseSystem
             int day = Convert.ToInt32(EmployeeBirthDay_textBox.Text);
             int month = Convert.ToInt32(EmployeeBirthMonth_textBox.Text);
             int year = Convert.ToInt32(EmployeeBirthYear_textBox.Text);
-
-            AddEmployee();
-        }
-
-        private void AddEmployee()
-        {
-            decimal salary = Convert.ToDecimal(EmployeeSalary_textBox.Text);
-            int day = Convert.ToInt32(EmployeeBirthDay_textBox.Text);
-            int month = Convert.ToInt32(EmployeeBirthMonth_textBox.Text);
-            int year = Convert.ToInt32(EmployeeBirthYear_textBox.Text);
             DateTime date = new DateTime(year, month, day);
 
-            _manager.CreateEmployee(EmployeeName_textBox.Text, EmployeeEmail_textBox.Text, EmployeePhoneNumber_textBox.Text, date,
+            AddEmployee(EmployeeName_textBox.Text, EmployeeEmail_textBox.Text, EmployeePhoneNumber_textBox.Text, date,
                 (Position)EmployeePosition_comboBox.SelectedItem, (EmployeeType)EmployeeType_comboBox.SelectedItem, salary);
+        }
+
+        private void AddEmployee(string name, string email, string phoneNumer, DateTime birthDate,
+            Position position, EmployeeType empType, decimal salary)
+        {
+            _manager.CreateEmployee(name, email, phoneNumer, birthDate, position, empType, salary);
         }
     }
 }

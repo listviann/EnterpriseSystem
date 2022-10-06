@@ -13,6 +13,7 @@ namespace EnterpriseSystem
 
             _manager = manager;
 
+            // Passing object data to the form controls
             Employee? emp = _manager.GetEmployeeById(id);
             _id = id;
             EmployeeName_textBox.Text = emp.Name;
@@ -24,6 +25,7 @@ namespace EnterpriseSystem
             EmployeeBirthYear_textBox.Text = emp.BirthDate.Year.ToString();
             EmployeePosition_comboBox.SelectedItem = emp.Position;
             
+            // Centering controls
             EditEmployee_label.Left = (this.ClientSize.Width - EditEmployee_label.Width) / 2;
             EmployeeName_textBox.Left = (this.ClientSize.Width - EmployeeName_textBox.Width) / 2;
             EmployeeEmail_textBox.Left = (this.ClientSize.Width - EmployeeEmail_textBox.Width) / 2;
@@ -36,6 +38,7 @@ namespace EnterpriseSystem
             ClearFields_button.Left = (this.ClientSize.Width - ClearFields_button.Width) / 2;
             DateFields_panel.Left = (this.ClientSize.Width - DateFields_panel.Width) / 2;
 
+            // Setting enum values as data source of the comboBox control
             EmployeePosition_comboBox.DataSource = Enum.GetValues(typeof(Position));
         }
 
@@ -101,20 +104,22 @@ namespace EnterpriseSystem
                 EmployeeBirthYear_textBox.Text = "0001";
             }
 
-            EditEmployee();
-            this.Close();
-        }
-
-        private void EditEmployee()
-        {
+            string name = EmployeeName_textBox.Text;
+            string email = EmployeeEmail_textBox.Text;
+            string phoneNumber = EmployeePhoneNumber_textBox.Text;
             decimal salary = Convert.ToDecimal(EmployeeSalary_textBox.Text);
             int day = Convert.ToInt32(EmployeeBirthDay_textBox.Text);
             int month = Convert.ToInt32(EmployeeBirthMonth_textBox.Text);
             int year = Convert.ToInt32(EmployeeBirthYear_textBox.Text);
             DateTime birthDate = new DateTime(year, month, day);
 
-            _manager.UpdateEmployee(_id, EmployeeName_textBox.Text, EmployeeEmail_textBox.Text, EmployeePhoneNumber_textBox.Text,
-                birthDate, (Position)EmployeePosition_comboBox.SelectedItem, salary);
+            EditEmployee(_id, name, email, phoneNumber, birthDate, (Position)EmployeePosition_comboBox.SelectedItem, salary);
+        }
+
+        private void EditEmployee(Guid id, string name, string email, string phoneNumber,
+            DateTime birthDate, Position position, decimal salary)
+        {
+            _manager.UpdateEmployee(id, name, email, phoneNumber, birthDate, position, salary);
         }
     }
 }
