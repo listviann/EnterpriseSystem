@@ -176,10 +176,15 @@ namespace EnterpriseSystem
         // thread of sorting is a child thread of logging thread
         public async Task SortAllEmployees()
         {
-            var outer = await Task.Factory.StartNew(async () =>
+            var loggingTask = await Task.Factory.StartNew(async () =>
             {
                 LoggerViewModel.Logger.Log($"Sorting is started at: {DateTime.Now}", Config.FILEPATH);
-                await Task.Run(() => Employees.Sort(new EmployeeSorter()));
+                //await Task.Run(() => Employees.Sort(new EmployeeSorter()));
+                var sortingTask = await Task.Factory.StartNew(async () =>
+                {
+                    //await Employees.Sort(new EmployeeSorter());
+                    await Task.Run(() => Employees.Sort(new EmployeeSorter()));
+                }, TaskCreationOptions.AttachedToParent);
                 LoggerViewModel.Logger.Log($"Sorting is ended at: {DateTime.Now}\nSorted elements number: {Employees.Count}", Config.FILEPATH);
             });
         }
