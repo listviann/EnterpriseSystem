@@ -89,7 +89,7 @@ namespace EnterpriseSystem.Entities
             if (IsValidObject(product))
             {
                 ProductsList.Add(product);
-                ProductsList.Sort(new ProductSorter());
+                //ProductsList.Sort(new ProductSorter());
             }
         }
 
@@ -108,7 +108,7 @@ namespace EnterpriseSystem.Entities
                 p.Name = name;
                 p.ProductType = productType;
                 p.SellingPrice = sellingPrice;
-                ProductsList.Sort(new ProductSorter());
+                //ProductsList.Sort(new ProductSorter());
             }
             else
             {
@@ -131,7 +131,7 @@ namespace EnterpriseSystem.Entities
             if (p != null)
             {
                 ProductsList.Remove(p);
-                ProductsList.Sort(new ProductSorter());
+                //ProductsList.Sort(new ProductSorter());
             }
             else
             {
@@ -139,6 +139,23 @@ namespace EnterpriseSystem.Entities
             }
         }
         #endregion
+
+        // Sorting
+        // sorting runs asynchronously in one thread
+        // logging of sorting runs asynchronously in another thread
+        // thread of sorting is a child thread of logging thread
+        public async Task SortProducts()
+        {
+            var loggingTask = await Task.Factory.StartNew(async () =>
+            {
+                LoggerViewModel.Logger.Log($"Sorting is started at: {DateTime.Now}", Config.FILEPATH);
+                var sortingTask = await Task.Factory.StartNew(async () =>
+                {
+                    await Task.Run(() => ProductsList.Sort(new ProductSorter()));
+                }, TaskCreationOptions.AttachedToParent);
+                LoggerViewModel.Logger.Log($"Sorting is ended at: {DateTime.Now}\nSorted elements number: {ProductsList.Count}", Config.FILEPATH);
+            });
+        }
 
         #region Validation
         // Validation of created object properties

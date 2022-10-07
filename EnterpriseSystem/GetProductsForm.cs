@@ -111,5 +111,17 @@ namespace EnterpriseSystem
                     break;
             }
         }
+
+        private void SortProducts_button_Click(object sender, EventArgs e)
+        {
+            Sort();
+            Products_listBox.DataSource = null;
+            Products_listBox.DataSource = _employee.ProductsList;
+        }
+
+        private async void Sort()
+        {
+            await _employee.SortProducts();
+        }
     }
 }

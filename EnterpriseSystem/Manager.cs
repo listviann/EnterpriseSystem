@@ -135,7 +135,7 @@ namespace EnterpriseSystem
                 }
             }
 
-            _fixedEmployees.Sort(new EmployeeSorter());
+            //_fixedEmployees.Sort(new EmployeeSorter());
 
             LoggerViewModel.Logger.Log("FIXED WAGE EMPLOYEES LIST", Config.FILEPATH);
             foreach (var e in _fixedEmployees)

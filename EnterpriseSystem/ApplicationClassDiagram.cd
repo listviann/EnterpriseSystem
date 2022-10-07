@@ -88,9 +88,9 @@
     </TypeIdentifier>
   </Class>
   <Class Name="EnterpriseSystem.Service.Config">
-    <Position X="3" Y="3.25" Width="1.5" />
+    <Position X="3" Y="2.75" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAABAAAABAAEAAAAA=</HashCode>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAABAAAABAAEABAAA=</HashCode>
       <FileName>Service\Config.cs</FileName>
     </TypeIdentifier>
   </Class>
