@@ -123,5 +123,10 @@ namespace EnterpriseSystem
         {
             await _employee.SortProducts();
         }
+
+        private void Products_listBox_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
     }
 }

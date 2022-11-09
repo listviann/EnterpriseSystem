@@ -148,12 +148,12 @@ namespace EnterpriseSystem.Entities
         {
             var loggingTask = await Task.Factory.StartNew(async () =>
             {
-                LoggerViewModel.Logger.Log($"Sorting is started at: {DateTime.Now}", Config.FILEPATH);
+                LoggerViewModel.Logger.Log($"Products sorting is started at: {DateTime.Now}", Config.FILEPATH);
                 var sortingTask = await Task.Factory.StartNew(async () =>
                 {
                     await Task.Run(() => ProductsList.Sort(new ProductSorter()));
                 }, TaskCreationOptions.AttachedToParent);
-                LoggerViewModel.Logger.Log($"Sorting is ended at: {DateTime.Now}\nSorted elements number: {ProductsList.Count}", Config.FILEPATH);
+                LoggerViewModel.Logger.Log($"Products sorting is ended at: {DateTime.Now}\nSorted elements number: {ProductsList.Count}", Config.FILEPATH);
             });
         }
 
