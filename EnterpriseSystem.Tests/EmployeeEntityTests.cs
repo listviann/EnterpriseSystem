@@ -4,6 +4,7 @@ using EnterpriseSystem.Logging;
 using System.Diagnostics;
 using System.Linq.Expressions;
 using System.Security.Cryptography.Pkcs;
+using System.Security.Cryptography.Xml;
 
 namespace EnterpriseSystem.Tests
 {
@@ -78,10 +79,25 @@ namespace EnterpriseSystem.Tests
             string testType = "";
             decimal testPrice = -500;
 
+            _testEmployee1.UpdateProduct(testProd.Id, testName, testType, testPrice);
             Product? updatedTestProd = _testEmployee1.ProductsList.FirstOrDefault(p => p.Id == testId);
+            
             Assert.IsFalse(updatedTestProd!.Name == testName
                 && updatedTestProd.ProductType == testType
                 && updatedTestProd.SellingPrice == testPrice);
+        }
+
+        [Test]
+        public void UpdateProduct_InvalidWithException()
+        {
+            try
+            {
+                _testEmployee1.UpdateProduct(Guid.NewGuid(), "Test product name", "Test product type", 700);
+            }
+            catch
+            {
+                Assert.Throws<ProductNotFoundException>(() => { throw new ProductNotFoundException(); });
+            }
         }
 
         [Test]
@@ -97,7 +113,7 @@ namespace EnterpriseSystem.Tests
         }
 
         [Test]
-        public void DeleteProduct_Invalid()
+        public void DeleteProduct_InvalidWithException()
         {
             Guid id = Guid.NewGuid();
 
@@ -134,6 +150,28 @@ namespace EnterpriseSystem.Tests
         }
         #endregion
 
+        #region Prooducts list sorting test
+        [Test]
+        public async Task SortProducts_Test()
+        {
+            Product testProduct1 = new Product(Guid.NewGuid(), "iPhone 14", "Smartphones", 1000);
+            Product testProduct2 = new Product(Guid.NewGuid(), "AMD Ryzen 7 5800X3D", "Computers", 800);
+            Product testProduct3 = new Product(Guid.NewGuid(), "AMD Ryzen 5", "Computers", 500);
+
+            List<Product> alreadySortedProductsList = new List<Product>()
+            {
+                testProduct3, testProduct2, testProduct1
+            };
+
+            _testEmployee1.ProductsList.Add(testProduct1);
+            _testEmployee1.ProductsList.Add(testProduct2);
+            _testEmployee1.ProductsList.Add(testProduct3);
+
+            await _testEmployee1.SortProducts();
+
+            Assert.That(_testEmployee1.ProductsList, Is.EqualTo(alreadySortedProductsList));
+        }
+        #endregion
         private void ShowValidationErrorMessage(string message)
         {
             Console.WriteLine(message);
