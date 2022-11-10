@@ -35,6 +35,18 @@ namespace EnterpriseSystem.Tests
             LoggerViewModel.Logger.Notify += LogTest;
         }
 
+        [TearDown]
+        public void Teardown()
+        {
+            _testEmployee1.ModelNotify -= ShowValidationErrorMessage;
+            _testEmployee2.ModelNotify -= ShowValidationErrorMessage;
+
+            _testEmployee1 = null;
+            _testEmployee2 = null;
+
+            LoggerViewModel.Logger.Notify -= LogTest;
+        }
+
         #region CRUD operations testing
         [Test]
         public void CreateProduct_Valid()
