@@ -169,8 +169,8 @@ namespace EnterpriseSystem.Tests
             Product testProduct1 = new Product(Guid.NewGuid(), "iPhone 14", "Smartphones", 1000);
             Product testProduct2 = new Product(Guid.NewGuid(), "AMD Ryzen 7 5800X3D", "Computers", 800);
             Product testProduct3 = new Product(Guid.NewGuid(), "AMD Ryzen 5", "Computers", 500);
-
-            List<Product> alreadySortedProductsList = new List<Product>()
+            
+            List<Product> expectedProductsList = new List<Product>()
             {
                 testProduct3, testProduct2, testProduct1
             };
@@ -181,7 +181,7 @@ namespace EnterpriseSystem.Tests
 
             await _testEmployee1.SortProducts();
 
-            Assert.That(_testEmployee1.ProductsList, Is.EqualTo(alreadySortedProductsList));
+            Assert.That(_testEmployee1.ProductsList, Is.EqualTo(expectedProductsList));
         }
         #endregion
         private void ShowValidationErrorMessage(string message)
