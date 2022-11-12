@@ -12,7 +12,7 @@ using System.Threading.Tasks;
 namespace EnterpriseSystem.Tests
 {
     [TestFixture]
-    public class ManagerEntityTests
+    internal class ManagerEntityTests
     {
         private Manager _manager;
 
@@ -244,11 +244,23 @@ namespace EnterpriseSystem.Tests
                 emp2, emp1, emp3
             };
 
+            Console.WriteLine("Expected: ");
+            foreach (var emp in expectedEmployeesList)
+            {
+                Console.WriteLine(emp);
+            }
+
             _manager.Employees.Add(emp1);
             _manager.Employees.Add(emp2);
             _manager.Employees.Add(emp3);
 
             await _manager.SortAllEmployees();
+
+            Console.WriteLine("\nActual");
+            foreach (var emp in _manager.Employees)
+            {
+                Console.WriteLine(emp);
+            }
 
             Assert.That(_manager.Employees, Is.EqualTo(expectedEmployeesList));
         }

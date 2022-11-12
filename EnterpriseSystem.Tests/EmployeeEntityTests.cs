@@ -10,7 +10,7 @@ namespace EnterpriseSystem.Tests
 {
     [TestFixture]
 
-    public class EmployeeEntityTests
+    internal class EmployeeEntityTests
     {
         private Employee _testEmployee1;
         private Employee _testEmployee2;
